@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/expenses"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:layout_marginTop="@dimen/margin16dp"
+        android:paddingHorizontal="@dimen/margin4dp"
+        android:background="@drawable/group_chips_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:background="@drawable/chip_shape"
+            app:chipCornerRadius="6dp"
+            app:chipStartPadding="@dimen/padding16dp"
+            app:chipEndPadding="@dimen/padding16dp"
+            tools:text="Tootel \n71IQD"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/primary_color" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:backgroundTint="@color/white"
+            app:chipStartPadding="@dimen/padding16dp"
+            app:chipEndPadding="@dimen/padding16dp"
+            android:background="@drawable/chip_shape"
+            app:chipCornerRadius="6dp"
+            android:textColor="@color/primary_color" />
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:backgroundTint="@color/white"
+            app:chipStartPadding="@dimen/padding16dp"
+            app:chipEndPadding="@dimen/padding16dp"
+            android:background="@drawable/chip_shape"
+            app:chipCornerRadius="6dp"
+            android:textColor="@color/primary_color" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="152dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="304x47"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group"
+        tools:layout_editor_absoluteX="167dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_shape"
+        android:elevation="16dp"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/margin16dp"
+        android:shadowDy="-8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin16dp"
+            android:layout_marginEnd="@dimen/margin16dp"
+            android:src="@drawable/ic_outline_date_range"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginTop="@dimen/margin16dp"
+            android:background="@drawable/background_icon_category_shape"
+            android:drawableStart="@drawable/ic_baseline_add_24"
+            android:drawableTint="@color/white"
+            android:paddingHorizontal="@dimen/margin8dp"
+            android:paddingVertical="@dimen/padding4dp"
+            android:text="Add"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatEditText2"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatEditText2" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin24dp"
+            android:backgroundTint="#CDCDCD"
+            android:hint="Amount..."
+            android:paddingStart="@dimen/padding8dp"
+            android:paddingBottom="@dimen/margin16dp"
+            android:textSize="@dimen/text14sp"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
+            app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/appCompatEditText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin24dp"
+            android:backgroundTint="#CDCDCD"
+            android:hint="Description..."
+            android:paddingStart="@dimen/padding8dp"
+            android:paddingBottom="@dimen/margin16dp"
+            android:textSize="@dimen/text14sp"
+            app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
+            app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/appCompatEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin24dp"
+            android:layout_marginTop="@dimen/margin24dp"
+            android:backgroundTint="#CDCDCD"
+            android:hint="Memo..."
+            android:paddingStart="42dp"
+            android:paddingBottom="@dimen/margin16dp"
+            android:textSize="@dimen/text14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/item_cast"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginHorizontal="@dimen/margin8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_icon_category_shape"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_akar_icons_plane"
+            android:tint="@color/white"
+            app:contentPadding="@dimen/margin4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/appCompatEditText"
+            app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
+            app:layout_constraintTop_toTopOf="@+id/appCompatEditText"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize24Percent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

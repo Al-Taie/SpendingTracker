@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--   margin   -->
+    <dimen name="margin2dp">2dp</dimen>
+    <dimen name="margin4dp">4dp</dimen>
+    <dimen name="margin8dp">8dp</dimen>
+    <dimen name="margin14dp">14dp</dimen>
+    <dimen name="margin16dp">16dp</dimen>
+    <dimen name="margin24dp">24dp</dimen>
+    <dimen name="margin28dp">28dp</dimen>
+    <dimen name="margin32dp">32dp</dimen>
+
+    <dimen name="padding4dp">4dp</dimen>
+    <dimen name="padding8dp">8dp</dimen>
+    <dimen name="padding12dp">12dp</dimen>
+    <dimen name="padding14dp">14dp</dimen>
+    <dimen name="padding16dp">16dp</dimen>
+    <dimen name="padding18dp">18dp</dimen>
+    <dimen name="padding24dp">24dp</dimen>
+    <dimen name="padding28dp">28dp</dimen>
+    <dimen name="padding32dp">32dp</dimen>
+
+    <dimen name="text8dp">8dp</dimen>
+    <dimen name="text10sp">10sp</dimen>
+    <dimen name="text12sp">12sp</dimen>
+    <dimen name="text16sp">16sp</dimen>
+    <dimen name="text14sp">14sp</dimen>
+    <dimen name="text18sp">18sp</dimen>
+    <dimen name="text20sp">20sp</dimen>
+    <dimen name="text24sp">24sp</dimen>
+    <dimen name="text28sp">28sp</dimen>
+    <dimen name="text32sp">32sp</dimen>
+
+    <dimen name="radius8">8dp</dimen>
+    <dimen name="radius12">12sp</dimen>
+    <dimen name="radius14">14dp</dimen>
+    <dimen name="radius16">16dp</dimen>
+    <dimen name="radius18">18dp</dimen>
+    <dimen name="radius24">24sp</dimen>
+    <dimen name="radius28">28dp</dimen>
+    <dimen name="radius32">32sp</dimen>
+    <dimen name="radius42">42dp</dimen>
+    <dimen name="radius52">52dp</dimen>
+    <dimen name="radius64">64dp</dimen>
+    <dimen name="radius72">72dp</dimen>
+    <dimen name="radius100">100dp</dimen>
+
+    <dimen name="search_bar_corners_radius">8dp</dimen>
+
+    <dimen name="elevation8">8dp</dimen>
+
+    <dimen name="stroke1dp">1dp</dimen>
+    <dimen name="text8sp">8sp</dimen>
+
+</resources>

@@ -1,11 +1,9 @@
 package com.watermelon.spendingtracker
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.watermelon.spendingtracker.databinding.ActivityMainBinding
+import com.watermelon.spendingtracker.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override val theme = R.style.Theme_SpendingTracker
+    override val viewID = R.layout.activity_main
 }

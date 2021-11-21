@@ -1,0 +1,3 @@
+package com.watermelon.spendingtracker.ui.base
+
+interface BaseInteractionListener

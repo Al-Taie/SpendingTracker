@@ -1,7 +1,6 @@
 package com.watermelon.spendingtracker.model.data.database
 
 import androidx.room.*
-import com.watermelon.spendingtracker.model.data.domain.Category
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
@@ -17,6 +16,6 @@ interface SpendingTypesDao {
     @Delete
     fun delete(spendingType: SpendingType) : Completable
 
-    @Query("SELECT * FROM TB_CATEGORY")
+    @Query("SELECT * FROM TB_SPENDING_TYPES")
     fun getAllSpendingTypes() : Observable<List<SpendingType>>
 }

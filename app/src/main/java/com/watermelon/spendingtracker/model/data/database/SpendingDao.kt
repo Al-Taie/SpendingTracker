@@ -7,7 +7,8 @@ import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface SpendingDao {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(spending: Spending) : Completable
 
     @Update

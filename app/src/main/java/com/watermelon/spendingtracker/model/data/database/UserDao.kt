@@ -7,7 +7,8 @@ import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface UserDao {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(user: User) : Completable
 
     @Update

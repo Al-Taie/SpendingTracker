@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="item"
+            type="com.watermelon.spendingtracker.model.data.domain.Category" />
 
+        <variable
+            name="listener"
+            type="com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener" />
     </data>
 
 
@@ -12,10 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4dp"
+        app:selectedItem="@{itemCategory}"
+        app:listener="@{listener}"
+        app:stream="@{item.id}"
         android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/item_cast"
+            android:id="@+id/itemCategory"
             android:layout_width="68dp"
             android:layout_height="68dp"
             android:scaleType="centerCrop"
@@ -37,6 +46,7 @@
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="@dimen/text14sp"
+            android:text="@{item.name}"
             android:layout_marginTop="@dimen/margin4dp"
             android:layout_marginHorizontal="@dimen/margin4dp"
             android:textColor="@color/icon_color"

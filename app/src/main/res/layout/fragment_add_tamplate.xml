@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.watermelon.spendingtracker.ui.addTemplate.AddTemplateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,16 +64,22 @@
                 app:chipCornerRadius="6dp"
                 app:chipStartPadding="@dimen/padding16dp"
                 app:chipEndPadding="@dimen/padding16dp"
-                android:text="Expenses"
+                app:listener="@{viewModel}"
+                app:stream="@{viewModel.spendingType[0].id}"
+                android:text="@{viewModel.spendingType[0].value}"
+                tools:text="Expenses"
                 android:textColor="@color/primary_color" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MyApp.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Income"
+                tools:text="Income"
                 app:chipStartPadding="@dimen/padding16dp"
                 app:chipEndPadding="@dimen/padding16dp"
+                app:listener="@{viewModel}"
+                app:stream="@{viewModel.spendingType[1].id}"
+                android:text="@{viewModel.spendingType[1].value}"
                 android:background="@drawable/chip_shape"
                 app:chipCornerRadius="6dp"
                 android:textColor="@color/primary_color" />
@@ -79,11 +87,12 @@
         </com.google.android.material.chip.ChipGroup>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tv_recycler_view"
+            android:id="@+id/categories_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin16dp"
             android:orientation="vertical"
+            app:items="@{viewModel.categories}"
             android:paddingHorizontal="@dimen/padding14dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
@@ -106,12 +115,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="@{viewModel.dateSpending}"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView"
+                tools:text="Nov 12 , 2021" />
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                listenerDate="@{viewModel}"
                 android:layout_marginTop="@dimen/margin16dp"
-                android:layout_marginEnd="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin24dp"
                 android:src="@drawable/ic_outline_date_range"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -126,6 +147,7 @@
                 android:paddingHorizontal="@dimen/margin8dp"
                 android:paddingVertical="@dimen/padding4dp"
                 android:text="Add"
+                android:onClick="@{() -> viewModel.addSpending()}"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText2"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatEditText2" />
@@ -137,7 +159,12 @@
                 android:layout_marginHorizontal="@dimen/margin24dp"
                 android:backgroundTint="#CDCDCD"
                 android:hint="Amount..."
-                android:paddingStart="@dimen/padding8dp"
+                android:digits="0123456789"
+                android:lines="1"
+                android:inputType="numberDecimal"
+                android:drawableTint="@color/icon_hint"
+                android:drawableStart="@drawable/ic_baseline_attach_money_24"
+                android:text="@={viewModel.amount}"
                 android:paddingBottom="@dimen/margin16dp"
                 android:textSize="@dimen/text14sp"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
@@ -152,7 +179,11 @@
                 android:backgroundTint="#CDCDCD"
                 android:hint="Description..."
                 android:paddingStart="@dimen/padding8dp"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/icon_hint"
+                android:drawableStart="@drawable/ic_baseline_message_24"
                 android:paddingBottom="@dimen/margin16dp"
+                android:text="@={viewModel.description}"
                 android:textSize="@dimen/text14sp"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
                 app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
@@ -163,31 +194,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin24dp"
-                android:layout_marginTop="@dimen/margin24dp"
                 android:backgroundTint="#CDCDCD"
                 android:hint="Memo..."
-                android:paddingStart="42dp"
+                android:drawablePadding="4dp"
+                android:drawableTint="@color/icon_hint"
+                android:drawableStart="@drawable/ic_baseline_drive_file_rename_outline_24"
+                android:lines="1"
                 android:paddingBottom="@dimen/margin16dp"
+                android:text="@={viewModel.memo}"
                 android:textSize="@dimen/text14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/item_cast"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginHorizontal="@dimen/margin8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/background_icon_category_shape"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_akar_icons_plane"
-                android:tint="@color/white"
-                app:contentPadding="@dimen/margin4dp"
-                app:layout_constraintBottom_toBottomOf="@+id/appCompatEditText"
-                app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
-                app:layout_constraintTop_toTopOf="@+id/appCompatEditText"
-                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize24Percent" />
+<!--            <com.google.android.material.imageview.ShapeableImageView-->
+<!--                android:id="@+id/item_cast"-->
+<!--                android:layout_width="24dp"-->
+<!--                android:layout_height="24dp"-->
+<!--                android:layout_marginHorizontal="@dimen/margin8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:background="@drawable/background_icon_category_shape"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/ic_akar_icons_plane"-->
+<!--                android:tint="@color/white"-->
+<!--                app:contentPadding="@dimen/margin4dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/appCompatEditText"-->
+<!--                app:layout_constraintStart_toStartOf="@+id/appCompatEditText"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/appCompatEditText"-->
+<!--                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize24Percent" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

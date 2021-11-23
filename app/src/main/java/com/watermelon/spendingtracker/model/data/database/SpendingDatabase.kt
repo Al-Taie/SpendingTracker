@@ -17,6 +17,7 @@ import com.watermelon.spendingtracker.model.data.domain.User
 )
 @TypeConverters(Converters::class)
 abstract class SpendingDatabase : RoomDatabase() {
+
     abstract val spendDao: SpendingDao
     abstract val userDao: UserDao
     abstract val categoryDao: CategoryDao
@@ -36,6 +37,7 @@ abstract class SpendingDatabase : RoomDatabase() {
             return instance ?: synchronized(this) { buildDatabase(context).also { instance = it } }
         }
 
-        val getInstance get() = instance!!
+        val getInstance get() = instance
     }
+
 }

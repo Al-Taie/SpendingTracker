@@ -3,6 +3,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import com.watermelon.spendingtracker.model.data.database.SpendingDatabase
 
 
 abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
@@ -13,6 +14,8 @@ abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        SpendingDatabase.getInstance(applicationContext)
         _binding = DataBindingUtil.setContentView(this, viewID)
     }
 }

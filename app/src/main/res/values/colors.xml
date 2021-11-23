@@ -17,5 +17,7 @@
     <color name="background_color">#F4F6FF</color>
     <color name="background_chips_color">#F2F3F7</color>
     <color name="card_color">#FFFFFF</color>
+    <color name="blue">#455DE3</color>
+    <color name="red">#F44336</color>
 
 </resources>

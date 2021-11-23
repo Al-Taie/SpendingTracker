@@ -10,9 +10,16 @@
         android:name="com.watermelon.spendingtracker.ui.home.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
+
     <fragment
         android:id="@+id/addTemplateFragment"
         android:name="com.watermelon.spendingtracker.ui.addTemplate.AddTemplateFragment"
         android:label="AddTemplateFragment"
         tools:layout="@layout/fragment_add_tamplate"/>
+
+    <fragment
+        android:id="@+id/statisticFragment"
+        android:name="com.watermelon.spendingtracker.ui.statistic.StatisticFragment"
+        android:label="StatisticFragment"
+        tools:layout="@layout/fragment_statistic"/>
 </navigation>

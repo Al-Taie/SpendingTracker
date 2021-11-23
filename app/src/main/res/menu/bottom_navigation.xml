@@ -6,11 +6,16 @@
         android:icon="@drawable/ic_baseline_home_24"
         android:checked="true"
         android:color="@color/base_color"/>
+
     <item
         android:id="@+id/addTemplateFragment"
         android:title="Tamplate"
         android:icon="@drawable/ic_baseline_home_24"
         android:color="@color/base_color"/>
 
-
+    <item
+        android:id="@+id/statisticFragment"
+        android:title="Statistic"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:color="@color/base_color"/>
 </menu>

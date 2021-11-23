@@ -1,4 +1,6 @@
 package com.watermelon.spendingtracker.ui.statistic
 
-class StatisticViewModel {
+import androidx.lifecycle.ViewModel
+
+class StatisticViewModel:ViewModel() {
 }

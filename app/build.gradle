@@ -84,4 +84,11 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'androidx.fragment:fragment-ktx:1.4.0'
     implementation 'androidx.activity:activity-ktx:1.4.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:28.0.0-rc01'
+    implementation 'com.github.hadiidbouk:ChartProgressBar-Android:2.0.6'
+
+    implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+
 }

@@ -6,16 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.watermelon.spendingtracker.model.data.Converters
-import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
-import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 
 @Database(
     entities = [
         User::class,
-        Categories::class,
-        UserCategoriesCrossRef::class,
+      //  Categories::class,
+        //UserCategoriesCrossRef::class,
         Salary::class
 
     ],
@@ -25,7 +23,7 @@ import com.watermelon.spendingtracker.model.data.database.relations.UserCategori
 abstract class SpendingDatabase : RoomDatabase() {
    // abstract val spendDao: SpendingDao
     abstract val userDao: UserDao
-    abstract val categoryDao: CategoryDao
+   // abstract val categoryDao: CategoryDao
     //  abstract val spendingTypesDao: SpendingTypesDao
     abstract val salaryDao:SalaryDao
 

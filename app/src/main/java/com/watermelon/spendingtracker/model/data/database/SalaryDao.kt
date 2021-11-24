@@ -17,8 +17,8 @@ interface SalaryDao {
     @Delete
     fun delete(salary: Salary) : Completable
 
-//    @Query("SELECT * FROM TB_SALARY")
-//    fun getAllUsers() : Observable<List<User>>
+    @Query("SELECT * FROM TB_SALARY")
+    fun getAllSalary() : Observable<List<Salary>>
 
 
 }

@@ -7,5 +7,7 @@ import androidx.room.PrimaryKey
 data class Salary(
     @PrimaryKey(autoGenerate = true)
     val salaryId: Long,
+    val userIdInSalary:Long,
     val salaryAmount: String,
+
 )

@@ -18,12 +18,14 @@ object Repository {
     fun insertUser(user: User) = userDao.insert(user)
     fun deleteUser(user: User) = userDao.delete(user)
     fun updateUser(user: User) = userDao.update(user)
-    fun getAllUsers() = userDao.getAllUsers()
+   // fun getAllUsers() = userDao.getAllUsers()
+    fun getUserWithSalary(user:String)= userDao.getUserWithSalary(user)
 
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)
     fun deleteSalary(salary: Salary) = salaryDao.delete(salary)
     fun updateSalary(salary: Salary) = salaryDao.update(salary)
-    fun getAllSalary() = salaryDao.getAllSalary()
+   // fun getAllSalary() = salaryDao.getAllSalary()
+
 
 //    fun insertSpending(spending: Spending) = spendingDao.insert(spending)
 //    fun deleteSpending(spending: Spending) = spendingDao.delete(spending)

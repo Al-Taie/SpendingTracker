@@ -111,7 +111,7 @@
             android:id="@+id/add_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{()->viewmodel.addUserAccount()}"
+
             android:text="Login"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

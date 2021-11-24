@@ -8,7 +8,8 @@ import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface SalaryDao {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(salary: Salary) : Completable
 
     @Update

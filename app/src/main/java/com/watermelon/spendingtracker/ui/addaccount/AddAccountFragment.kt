@@ -10,4 +10,5 @@ class AddAccountFragment : BaseFragment<FragmentAddAccountBinding>() {
     override val viewModel: AddAccountViewModel by activityViewModels()
     override val inflate: (LayoutInflater, ViewGroup?, attachToRoot: Boolean) -> FragmentAddAccountBinding
         get() = FragmentAddAccountBinding::inflate
+
 }

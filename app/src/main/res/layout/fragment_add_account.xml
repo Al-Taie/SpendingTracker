@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.watermelon.spendingtracker.ui.addaccount.AddAccountViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,6 +38,7 @@
                 android:inputType="none"
                 android:padding="12dp"
 
+
                 android:textColorHint="@color/black"
                 android:textSize="14sp" />
 
@@ -63,25 +67,54 @@
                 android:layout_height="match_parent"
                 android:gravity="top"
                 android:hint="Salary"
-                android:inputType="none"
+                android:inputType="number"
                 android:padding="12dp"
+
                 android:textColorHint="@color/black"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <EditText
+            android:id="@+id/aaa"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@={viewmodel.userNameAccount}"
+            app:layout_constraintLeft_toLeftOf="@id/add_account"
+            app:layout_constraintRight_toRightOf="@id/add_account"
+            app:layout_constraintTop_toBottomOf="@id/add_account" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="@={viewmodel.userSalary}"
+            app:layout_constraintLeft_toLeftOf="@id/aaa"
+            app:layout_constraintRight_toRightOf="@id/aaa"
+            app:layout_constraintTop_toBottomOf="@id/aaa" />
+
+        <!--        <Button-->
+        <!--          -->
+        <!--            style="@style/ButtonCostem"-->
+        <!--            android:layout_width="150dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="16dp"-->
+        <!--                    android:onClick="@{()->viewmodel.addUserAccount()}"-->
+        <!--                    android:text="Login"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--            app:layout_constraintRight_toRightOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@id/input_salary_layout" />-->
+
+
         <Button
-            android:id="@+id/button"
-            style="@style/ButtonCostem"
-            android:layout_width="150dp"
+            android:id="@+id/add_account"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{()->viewmodel.addUserAccount()}"
             android:text="Login"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/input_salary_layout"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="16dp"/>
-
+            app:layout_constraintTop_toBottomOf="@id/input_salary_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

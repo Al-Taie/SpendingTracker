@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Observable
 @Dao
 interface CategoryDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(category: Category) : Completable
 
     @Update

@@ -1,18 +1,15 @@
 package com.watermelon.spendingtracker.ui.addTemplate
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.domain.Category
 import com.watermelon.spendingtracker.model.data.domain.Spending
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.watermelon.spendingtracker.ui.base.BaseViewModel
 import java.util.*
 
 
-class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
+class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
     CategoriesInteractionListener {
 
     var categories = MutableLiveData<List<Category>>()
@@ -27,16 +24,29 @@ class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
     var description = MutableLiveData<String?>()
 
     init {
+//        addCategories()
+//        addSpendingType()
         loadSpendingType()
         loadCategories()
     }
+//
+//    private fun addCategories() {
+//        subscribeData(Repository.insertCategory(Category(0, "Food")))
+//        subscribeData(Repository.insertCategory(Category(0, "Fitness")))
+//        subscribeData(Repository.insertCategory(Category(0, "Pet")))
+//    }
+//
+//    private fun addSpendingType() {
+//        subscribeData(Repository.insertSpendingType(SpendingType(0, "Expenses")))
+//        subscribeData(Repository.insertSpendingType(SpendingType(1, "Income")))
+//    }
 
     private fun loadCategories() {
-        Repository
-            .getAllCategory()
-            ?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(this::onGetCategories, this::onNotesFail)
+        observeData(
+            Repository.getAllCategory(),
+            this::onGetCategories,
+            this::onNotesFail
+        )
     }
 
     private fun onGetCategories(items: List<Category>) {
@@ -47,14 +57,11 @@ class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
 
 
     private fun loadSpendingType() {
-        Repository
-            .getAllSpendingType()
-            ?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())
-            ?.subscribe(
-                this::onGetSpendingType,
-                this::onNotesFail
-            )
+        observeData(
+            Repository.getAllSpendingType(),
+            this::onGetSpendingType,
+            this::onNotesFail
+        )
     }
 
     private fun onGetSpendingType(items: List<SpendingType>) {
@@ -66,15 +73,20 @@ class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
     fun addSpending() {
         if (checkData()) {
             Repository.insertSpending(
-                Spending(0, categoriesSelected.value!!, amount.value!!.toLong(),
-                    "IQD", memo.value!!, description.value!!, Date(dateSpending.value)
-                ))
-        }else {
-            Log.i("ssssss" , "erroe")
+                Spending(
+                    0,
+                    categoriesSelected.value!!,
+                    amount.value!!.toLong(),
+                    "IQD",
+                    memo.value!!,
+                    description.value!!,
+                    Date(dateSpending.value)
+                )
+            )
         }
     }
 
-    fun checkData(): Boolean =
+    private fun checkData(): Boolean =
         (!memo.value.isNullOrEmpty() && !description.value.isNullOrEmpty() &&
                 !dateSpending.value.isNullOrEmpty() && !amount.value.isNullOrEmpty())
 

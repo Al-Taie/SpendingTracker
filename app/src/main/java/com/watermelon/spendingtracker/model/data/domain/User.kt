@@ -8,5 +8,6 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val income: Double
+    val income: Double,
+    val expense: Double
 )

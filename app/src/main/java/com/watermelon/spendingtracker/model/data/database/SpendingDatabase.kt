@@ -27,6 +27,7 @@ abstract class SpendingDatabase : RoomDatabase() {
     abstract val userDao: UserDao
     abstract val categoryDao: CategoryDao
     //  abstract val spendingTypesDao: SpendingTypesDao
+    abstract val salaryDao:SalaryDao
 
     companion object {
         private const val DB_NAME = "DB_SPENDING"

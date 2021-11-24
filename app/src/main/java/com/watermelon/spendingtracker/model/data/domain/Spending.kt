@@ -12,7 +12,7 @@ data class Spending(
     val userID: Long,
     @ColumnInfo(name = "category_id")
     val categoryID: Long,
-    val amount: Long,
+    val amount: Double,
     val currency: String, // IQD, USD
     val memo: String,
     val description: String,

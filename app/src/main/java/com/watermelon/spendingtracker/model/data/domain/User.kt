@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    val name: String
+    val name: String,
+    val income: Double
 )

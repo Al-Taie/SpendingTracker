@@ -20,4 +20,8 @@
         <item name="cornerSize">24%</item>
     </style>
 
+    <style name="ButtonCostem" parent="Widget.MaterialComponents.Button.OutlinedButton">
+
+    </style>
+
 </resources>

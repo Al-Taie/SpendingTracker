@@ -1,4 +1,4 @@
-package com.watermelon.spendingtracker.model.data.domain
+package com.watermelon.spendingtracker.model.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -6,6 +6,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "TB_USER")
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
-    val name: String
+    val userId:Long,
+    val userName: String,
 )

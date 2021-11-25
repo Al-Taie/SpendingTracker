@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.watermelon.spendingtracker.ui.statistic.StatisticViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,26 +16,46 @@
         android:background="@drawable/background_shape"
         tools:context=".ui.statistic.StatisticFragment">
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin24dp"
-            android:text="zahraa"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text18sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!--        <TextView-->
+        <!--            android:id="@+id/user_name"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_margin="@dimen/margin24dp"-->
+        <!--            android:text="@{viewmodel.user.toString()}"-->
+        <!--            android:textColor="@color/black"-->
+        <!--            android:textSize="@dimen/text18sp"-->
+        <!--            android:textStyle="bold"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="@dimen/margin24dp"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:src="@drawable/ic_arrow_down"
-            app:layout_constraintBottom_toBottomOf="@+id/user_name"
-            app:layout_constraintStart_toEndOf="@id/user_name"
-            app:layout_constraintTop_toTopOf="@id/user_name" />
+        <!--        <ImageView-->
+        <!--            android:layout_width="24dp"-->
+        <!--            android:layout_height="@dimen/margin24dp"-->
+        <!--            android:layout_marginStart="@dimen/margin8dp"-->
+        <!--            android:src="@drawable/ic_arrow_down"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/user_name"-->
+        <!--            app:layout_constraintStart_toEndOf="@id/user_name"-->
+        <!--            app:layout_constraintTop_toTopOf="@id/user_name" />-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/spinner"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/selected_meme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textAutoComplete"
+                app:users="@{viewmodel.users}"
+                android:text="user"
+                tools:ignore="LabelFor" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group"
@@ -46,7 +69,7 @@
             android:paddingEnd="@dimen/padding16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_name"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -208,8 +231,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/margin32dp"
             android:elevation="2dp"
+            android:gravity="center"
             app:hdBarCanBeClick="true"
             app:hdBarHeight="170dp"
             app:hdBarRadius="10dp"
@@ -229,7 +253,6 @@
             app:hdPinTxtSize="17sp"
             app:hdProgressClickColor="@color/black"
             app:hdProgressColor="@color/progress"
-            android:layout_marginHorizontal="@dimen/margin32dp"
             app:hdProgressDisableColor="@color/progress_disable"
             app:layout_constraintBottom_toBottomOf="@+id/card_view_two"
             app:layout_constraintEnd_toEndOf="@+id/card_view_two"
@@ -250,14 +273,14 @@
             app:layout_constraintTop_toBottomOf="@id/card_view_two" />
 
         <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart_view"
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:id="@+id/pieChart_view"
             android:elevation="@dimen/margin2dp"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/card_view_three"
-            app:layout_constraintStart_toStartOf="@+id/card_view_three"
             app:layout_constraintEnd_toEndOf="@id/card_view_three"
+            app:layout_constraintStart_toStartOf="@+id/card_view_three"
             app:layout_constraintTop_toTopOf="@id/card_view_three" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="item"
+            type="com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef" />
 
+        <variable
+            name="listener"
+            type="com.watermelon.spendingtracker.ui.home.TemplateInteractionListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -33,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginLeft="48dp"
+                android:text="@{item.categoriesName}"
                 app:layout_constraintBottom_toBottomOf="@id/categories"
                 app:layout_constraintLeft_toLeftOf="@id/categories"
                 app:layout_constraintTop_toTopOf="@id/categories"
@@ -44,6 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginRight="48dp"
+                android:text="@{item.userName}"
                 app:layout_constraintBottom_toBottomOf="@id/categories"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginTop="8dp"
-
+                android:text="@{String.valueOf(item.categoriesId)}"
                 app:layout_constraintLeft_toLeftOf="@id/spent_money"
                 app:layout_constraintRight_toRightOf="@id/spent_money"
                 app:layout_constraintTop_toBottomOf="@id/spent_money"

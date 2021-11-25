@@ -14,7 +14,6 @@ abstract class BaseActivity<VDB : ViewDataBinding> : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         SpendingDatabase.getInstance(applicationContext)
         _binding = DataBindingUtil.setContentView(this, viewID)
     }

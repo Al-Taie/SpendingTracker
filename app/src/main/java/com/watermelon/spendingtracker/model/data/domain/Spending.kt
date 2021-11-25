@@ -5,16 +5,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "TB_SPENDING")
-data class Spending(
-    @ColumnInfo(name = "user_id")
-    @PrimaryKey(autoGenerate = true)
-    val userID: Long,
-    @ColumnInfo(name = "category_id")
-    val categoryID: Long,
-    val amount: Double,
-    val currency: String, // IQD, USD
-    val memo: String,
-    val description: String,
-    val date: Date
-)
+//@Entity(tableName = "TB_SPENDING")
+//data class Spending(
+//    @ColumnInfo(name = "user_id")
+//    @PrimaryKey(autoGenerate = true)
+//    val userID: Long,
+//    @ColumnInfo(name = "category_id")
+//    val categoryID: Long,
+//    val amount: Long,
+//    val currency: String, // IQD, USD
+//    val memo: String,
+//    val description: String,
+//    val date: Date
+//)

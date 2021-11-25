@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/addTemplateFragment">
+    app:startDestination="@id/addAccountFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -22,4 +22,9 @@
         android:name="com.watermelon.spendingtracker.ui.statistic.StatisticFragment"
         android:label="StatisticFragment"
         tools:layout="@layout/fragment_statistic"/>
+    <fragment
+        android:id="@+id/addAccountFragment"
+        android:name="com.watermelon.spendingtracker.ui.addaccount.AddAccountFragment"
+        android:label="AddAccountFragment"
+        tools:layout="@layout/fragment_add_account"/>
 </navigation>

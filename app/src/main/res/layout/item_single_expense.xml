@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="item"
+            type="com.watermelon.spendingtracker.model.data.database.entities.Categories" />
+
+        <variable
+            name="listener"
+            type="com.watermelon.spendingtracker.ui.calender.CalenderInteractionListener" />
 
     </data>
 

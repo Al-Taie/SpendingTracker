@@ -1,6 +1,7 @@
 package com.watermelon.spendingtracker.model.data
 
 import com.watermelon.spendingtracker.model.data.database.SpendingDatabase
+import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
 
@@ -10,7 +11,7 @@ import com.watermelon.spendingtracker.model.data.database.entities.User
 object Repository {
     //private val spendingDao = SpendingDatabase.getInstance.spendDao
     private val userDao = SpendingDatabase.getInstance.userDao
-   // private val categoryDao = SpendingDatabase.getInstance.categoryDao
+    private val categoriesDao = SpendingDatabase.getInstance.categoriesDao
 
     //private val spendingTypesDao = SpendingDatabase.getInstance.spendingTypesDao
     private val salaryDao = SpendingDatabase.getInstance.salaryDao
@@ -37,8 +38,8 @@ object Repository {
 //    fun updateSpendingType(spendingType: SpendingType) = spendingTypesDao.update(spendingType)
     //  fun getAllSpendingType() = spendingTypesDao.getAllSpendingTypes()
 //
-//    fun insertCategory(category: Categories) = categoryDao.insert(category)
-//    fun deleteCategory(category: Categories) = categoryDao.delete(category)
-//    fun updateCategory(category: Categories) = categoryDao.update(category)
-//    fun getAllCategory() = categoryDao.getAllCategory()
+    fun insertCategory(category: Categories) = categoriesDao.insert(category)
+    fun deleteCategory(category: Categories) = categoriesDao.delete(category)
+    fun updateCategory(category: Categories) = categoriesDao.update(category)
+    fun getAllCategory() = categoriesDao.getAllCategory()
 }

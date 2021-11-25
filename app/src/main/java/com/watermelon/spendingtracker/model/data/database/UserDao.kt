@@ -22,17 +22,16 @@ interface UserDao {
 //    @Query("SELECT * FROM TB_USER")
 //    fun getAllUsers() : Observable<List<User>>
 
+//
+//    @Transaction
+//    @Query("SELECT * FROM TB_USER WHERE Name =:user")
+//    fun getUserWithSalary(user: String): Observable<List<SalaryOfUser>>
 
-    @Transaction
-    @Query("SELECT * FROM TB_USER WHERE Name =:user")
-    fun getUserWithSalary(user: String): Observable<List<SalaryOfUser>>
 
-    //    @Query("select accounts.id as accountId," +
-//            "from accounts inner join currencies on accounts.currencyId=currencies.id")
-//    fun getAll():LiveData<Array<AccountModel>>
+
     @Transaction
     @Query("SELECT * FROM TB_USER inner join TB_SALARY WHERE id = salaryId")
-    fun getUserWithSalaryTwo(): Observable<List<SalaryOfUser>>
+    fun getUserWithSalary(): Observable<List<SalaryOfUser>>
 
     @Transaction
     @Query("SELECT * FROM TB_USER inner join TB_SPENDING WHERE id =userID")

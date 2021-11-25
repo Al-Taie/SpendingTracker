@@ -66,7 +66,6 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
     var yearCal = cal.get(Calendar.YEAR)
 
     view.setOnClickListener { v ->
-
         DatePickerDialog(view.context, { view, year, monthOfYear, dayOfMonth ->
             cal.set(year, monthOfYear, dayOfMonth)
             yearCal = year
@@ -77,4 +76,5 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
         },yearCal,monthCal ,dayCal).show()
     }
+
 }

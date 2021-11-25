@@ -7,10 +7,10 @@ import java.util.*
 
 @Entity(tableName = "TB_SPENDING")
 data class Spending(
-    @ColumnInfo(name = "user_id")
+
     @PrimaryKey(autoGenerate = true)
     val userID: Long,
-    @ColumnInfo(name = "category_id")
+   // @ColumnInfo(name = "category_id")
     val categoryID: Long,
     val amount: Long,
     val currency: String, // IQD, USD

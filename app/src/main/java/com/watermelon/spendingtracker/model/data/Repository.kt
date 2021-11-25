@@ -6,7 +6,7 @@ import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
-import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 
 object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao

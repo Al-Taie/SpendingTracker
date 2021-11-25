@@ -10,7 +10,8 @@ import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
-import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
+import com.watermelon.spendingtracker.model.data.database.relations.CategoriesSpendingCrossRef
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
 @Database(
@@ -20,7 +21,8 @@ import com.watermelon.spendingtracker.model.data.domain.SpendingType
         UserCategoriesCrossRef::class,
         Salary::class,
         Spending::class,
-        SpendingType::class
+        SpendingType::class,
+        CategoriesSpendingCrossRef::class
 
 
     ],

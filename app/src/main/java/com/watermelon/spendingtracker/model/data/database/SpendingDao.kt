@@ -1,7 +1,7 @@
 package com.watermelon.spendingtracker.model.data.database
 
 import androidx.room.*
-import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 

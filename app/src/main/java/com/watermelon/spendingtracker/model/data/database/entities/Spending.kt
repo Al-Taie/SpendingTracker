@@ -1,6 +1,5 @@
-package com.watermelon.spendingtracker.model.data.domain
+package com.watermelon.spendingtracker.model.data.database.entities
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
@@ -9,8 +8,9 @@ import java.util.*
 data class Spending(
 
     @PrimaryKey(autoGenerate = true)
-    val userID: Long,
-   // @ColumnInfo(name = "category_id")
+    val spendingId: Long,
+    // val userID: Long,
+    // @ColumnInfo(name = "category_id")
     val categoryID: Long,
     val amount: Long,
     val currency: String, // IQD, USD

@@ -3,18 +3,23 @@ package com.watermelon.spendingtracker.utils
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseBindingListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import com.watermelon.spendingtracker.R
 import com.watermelon.spendingtracker.model.data.State
+import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
+import com.watermelon.spendingtracker.ui.statistic.UserSpinnerAdapter
 import java.text.DateFormat
 import java.util.*
 
@@ -77,4 +82,37 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
         },yearCal,monthCal ,dayCal).show()
     }
 
+}
+
+
+@BindingAdapter(value = ["users", "selectedUsers", "selectedUsersAttrChanged"], requireAll = false)
+fun setUsers(spinner: Spinner?, users: List<User>?, selectedUser: User, listener: InverseBindingListener) {
+    if (users == null) return
+    if (spinner == null) return
+    spinner.adapter = UserSpinnerAdapter(spinner.context, android.R.layout.simple_spinner_dropdown_item, users)
+    setCurrentSelection(spinner, selectedUser)
+    setSpinnerListener(spinner, listener)
+}
+
+private fun setSpinnerListener(spinner: Spinner, listener: InverseBindingListener) {
+    spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) = listener.onChange()
+        override fun onNothingSelected(adapterView: AdapterView<*>) = listener.onChange()
+    }
+}
+
+private fun setCurrentSelection(spinner: Spinner, selectedItem: User?): Boolean {
+    if (selectedItem == null) {
+        return false
+    }
+
+    for (index in 0 until spinner.adapter.count) {
+        val currentItem = spinner.getItemAtPosition(index) as User
+        if (currentItem.name == selectedItem.name) {
+            spinner.setSelection(index)
+            return true
+        }
+    }
+
+    return false
 }

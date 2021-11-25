@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.watermelon.spendingtracker.model.data.Repository
-import com.watermelon.spendingtracker.model.data.domain.Category
+import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.domain.Spending
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -15,7 +15,7 @@ import java.util.*
 class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
     CategoriesInteractionListener {
 
-    var categories = MutableLiveData<List<Category>>()
+    var categories = MutableLiveData<List<Categories>>()
     var spendingType = MutableLiveData<List<SpendingType>>()
 
     var spendingTypeSelected = MutableLiveData(0)
@@ -39,7 +39,7 @@ class AddTemplateViewModel : ViewModel(), TemplateInteractionListener,
             ?.subscribe(this::onGetCategories, this::onNotesFail)
     }
 
-    private fun onGetCategories(items: List<Category>) {
+    private fun onGetCategories(items: List<Categories>) {
         categories.postValue(items)
     }
 

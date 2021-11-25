@@ -1,7 +1,6 @@
 package com.watermelon.spendingtracker.ui.base
 
 import androidx.lifecycle.ViewModel
-import com.watermelon.spendingtracker.model.data.domain.Category
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable

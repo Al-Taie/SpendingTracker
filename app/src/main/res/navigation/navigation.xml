@@ -27,4 +27,9 @@
         android:name="com.watermelon.spendingtracker.ui.addaccount.AddAccountFragment"
         android:label="AddAccountFragment"
         tools:layout="@layout/fragment_add_account"/>
+    <fragment
+        android:id="@+id/calenderFragment"
+        android:name="com.watermelon.spendingtracker.ui.calender.CalenderFragment"
+        android:label="CalenderFragment"
+        tools:layout="@layout/fragment_calender"/>
 </navigation>

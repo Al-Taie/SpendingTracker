@@ -6,6 +6,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/drawable/card_shape.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/drawable/group_chips_shape.xml" value="0.2703125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/drawable/ic_baseline_insights_24.xml" value="0.2703125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/drop_down_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/fragment_add_tamplate.xml" value="0.1675925925925926" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/fragment_calender.xml" value="0.4" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/item_expenses.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/item_single_expense.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/item_test.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTracker/app/src/main/res/menu/bottom_navigation.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

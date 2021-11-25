@@ -2,24 +2,26 @@ package com.watermelon.spendingtracker.utils
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.watermelon.spendingtracker.R
 import com.watermelon.spendingtracker.model.data.State
 import com.watermelon.spendingtracker.model.data.database.entities.User
+import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
-import com.watermelon.spendingtracker.ui.statistic.UserSpinnerAdapter
 import java.text.DateFormat
 import java.util.*
 
@@ -52,21 +54,25 @@ fun streamObserve(view: View, itemId: Int?, listener: TemplateInteractionListene
 
 
 @SuppressLint("ResourceAsColor")
-@BindingAdapter(value = ["app:selectedItem", "app:listener" ,  "app:stream"])
-fun onClickSelectedItem(view: View, selectedItem: ShapeableImageView?
-                        , listener: CategoriesInteractionListener , itemId: Long? ){
-   view.setOnClickListener {
-       selectedItem?.setBackgroundColor(R.color.base_color)
-       selectedItem?.setColorFilter(ContextCompat.getColor(view.context , R.color.white))
-       listener.onClickCategories(itemId)
-   }
+@BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
+fun onClickSelectedItem(
+    view: View,
+    selectedItem: ShapeableImageView?,
+    listener: CategoriesInteractionListener,
+    itemId: Long?
+) {
+    view.setOnClickListener {
+        selectedItem?.setBackgroundColor(R.color.base_color)
+        selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
+        listener.onClickCategories(itemId)
+    }
 }
 
 @BindingAdapter(value = ["listenerDate"])
 fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
     val cal: Calendar = Calendar.getInstance()
-    var dayCal =  cal.get(Calendar.DAY_OF_WEEK)
+    var dayCal = cal.get(Calendar.DAY_OF_WEEK)
     var monthCal = cal.get(Calendar.MONTH)
     var yearCal = cal.get(Calendar.YEAR)
 
@@ -79,24 +85,26 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
             listener.setSpendingDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(cal.time))
 
-        },yearCal,monthCal ,dayCal).show()
+        }, yearCal, monthCal, dayCal).show()
     }
 
 }
 
 
-@BindingAdapter(value = ["users", "selectedUsers", "selectedUsersAttrChanged"], requireAll = false)
-fun setUsers(spinner: Spinner?, users: List<User>?, selectedUser: User, listener: InverseBindingListener) {
-    if (users == null) return
-    if (spinner == null) return
-    spinner.adapter = UserSpinnerAdapter(spinner.context, android.R.layout.simple_spinner_dropdown_item, users)
-    setCurrentSelection(spinner, selectedUser)
-    setSpinnerListener(spinner, listener)
+@BindingAdapter(value = ["app:users"])
+fun setUsers(view: MaterialAutoCompleteTextView, data: List<UserCategoriesCrossRef>?) {
+    Log.v("TESTING", data.toString())
+    data?.map { it.userName }?.let { usersArray ->
+        val adapter = ArrayAdapter(view.context, R.layout.drop_down_item, usersArray)
+        view.setAdapter(adapter)
+    }
 }
 
 private fun setSpinnerListener(spinner: Spinner, listener: InverseBindingListener) {
     spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) = listener.onChange()
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) =
+            listener.onChange()
+
         override fun onNothingSelected(adapterView: AdapterView<*>) = listener.onChange()
     }
 }

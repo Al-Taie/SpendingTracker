@@ -11,18 +11,19 @@ import com.watermelon.spendingtracker.databinding.FragmentStatisticBinding
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.ui.base.BaseFragment
 import com.watermelon.spendingtracker.ui.home.HomeViewModel
+import com.watermelon.spendingtracker.utils.setUsers
 
 class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
-    override val viewModel: HomeViewModel by activityViewModels()
+    override val viewModel: StatisticViewModel by activityViewModels()
     override val inflate: (LayoutInflater, ViewGroup?, attachToRoot: Boolean) -> FragmentStatisticBinding
         get() = FragmentStatisticBinding::inflate
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         changeChartShape()
-        val adapter = ArrayAdapter(this, R.layout.drop_down_item, mutableListOf<User>())
-        binding.selectedMeme.setAdapter(adapter)
+
+        viewModel.users.observe(this, { setUsers(binding.selectedMeme, it) })
     }
 
-    private fun changeChartShape (){
+    private fun changeChartShape() {
     }
 }

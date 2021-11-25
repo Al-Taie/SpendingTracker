@@ -18,20 +18,24 @@ class AddAccountViewModel : ViewModel() {
 
     fun addUserAccount() {
 
+        userNameAccount.value?.let {
+            Repository.insertUser(
+                User(0,it)
+            )
+                .subscribeOn(Schedulers.io())
+                .subscribe()
+        }
+        userSalary.value?.let {
+            Repository.insertSalary(
+                Salary(0,
+                    it,
+                    userNameAccount.value.toString()
+                )
+            )
+                .subscribeOn(Schedulers.io())
+                .subscribe()
+        }
 
-        Repository.insertUser(
-            User(0, "Ammar")
-        )
-            .subscribeOn(Schedulers.io())
-            .subscribe()
-
-
-
-        Repository.insertSalary(
-            Salary(0, 1, "1000")
-        )
-            .subscribeOn(Schedulers.io())
-            .subscribe()
 
         val getUserWithSalary = Repository.getUserWithSalary("Ammar")
 

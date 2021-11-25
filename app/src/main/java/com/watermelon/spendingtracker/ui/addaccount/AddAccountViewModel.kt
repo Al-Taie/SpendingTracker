@@ -11,25 +11,24 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class AddAccountViewModel : ViewModel() {
 
 
-    val userNameAccount = MutableLiveData<String?>()
+    val userNameAccount = MutableLiveData<String>()
 
     val userSalary = MutableLiveData<String>()
 
 
     fun addUserAccount() {
 
-        userNameAccount.value?.let {
-            Log.i("text",it)
-            Repository.insertUser(
-                User(0, it)
-            )
-                .subscribeOn(Schedulers.io())
-                .subscribe()
-        }
+
+        Repository.insertUser(
+            User(0, "Ammar")
+        )
+            .subscribeOn(Schedulers.io())
+            .subscribe()
+
 
 
         Repository.insertSalary(
-            Salary(0, 1,"1000")
+            Salary(0, 1, "1000")
         )
             .subscribeOn(Schedulers.io())
             .subscribe()

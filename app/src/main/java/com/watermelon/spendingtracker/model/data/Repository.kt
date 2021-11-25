@@ -4,6 +4,7 @@ import com.watermelon.spendingtracker.model.data.database.SpendingDatabase
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
+import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
 import com.watermelon.spendingtracker.model.data.domain.Spending
@@ -19,9 +20,11 @@ object Repository {
     fun insertUser(user: User) = userDao.insert(user)
     fun deleteUser(user: User) = userDao.delete(user)
     fun updateUser(user: User) = userDao.update(user)
+    fun getAllUsers() = userDao.getAllUsers()
+     fun getAllUsersWithCategories() = userDao.getAllUsersWithCategories()
 
-    // fun getAllUsers() = userDao.getAllUsers()
     fun getUserWithSalary(user: String) = userDao.getUserWithSalary(user)
+    fun insertUserWithCategory(user: UserCategoriesCrossRef)= userDao.insertUserWithCategory(user)
 
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)
     fun deleteSalary(salary: Salary) = salaryDao.delete(salary)

@@ -9,8 +9,9 @@ import com.watermelon.spendingtracker.model.data.database.entities.User
 data class SalaryOfUser(
     @Embedded val user: User,
     @Relation(
-        parentColumn = "userId",
-        entityColumn = "userIdInSalary"
+        parentColumn = "name",
+        entityColumn = "salaryAmount"
+
     )
     val salary: Salary
 )

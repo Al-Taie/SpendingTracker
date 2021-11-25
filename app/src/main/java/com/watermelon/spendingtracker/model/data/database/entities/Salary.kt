@@ -6,8 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "TB_SALARY")
 data class Salary(
     @PrimaryKey(autoGenerate = true)
-    val salaryId: Long,
-    val userIdInSalary:Long,
+    val salaryId:Long,
     val salaryAmount: String,
+    val userName:String,
+
 
 )

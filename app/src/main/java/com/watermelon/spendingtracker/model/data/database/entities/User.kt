@@ -1,4 +1,4 @@
-package com.watermelon.spendingtracker.model.data.domain
+package com.watermelon.spendingtracker.model.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,6 +8,6 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val name: String,
-    val income: Double,
-    val expense: Double
+//    val income: Double,
+//    val expense: Double
 )

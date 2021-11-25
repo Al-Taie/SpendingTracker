@@ -21,7 +21,7 @@ object Repository {
     fun updateUser(user: User) = userDao.update(user)
 
     // fun getAllUsers() = userDao.getAllUsers()
-    fun getUserWithSalary(user: String) = userDao.getUserWithSalary(user)
+    fun getUserWithSalary(user: String) = userDao.getUserWithSalary()
 
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)
     fun deleteSalary(salary: Salary) = salaryDao.delete(salary)

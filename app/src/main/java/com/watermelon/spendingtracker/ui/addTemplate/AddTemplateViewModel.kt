@@ -29,65 +29,10 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
 
 
     init {
-        checkAndAddCategories()
-        addSpendingType()
         loadCategories()
         loadSpendingType()
     }
 
-    private fun checkAndAddCategories() {
-        Repository.getAllCategory().subscribe {
-            if (it.isNullOrEmpty())
-                insertCategories()
-        }
-    }
-
-    private fun insertCategories(){
-        Repository.apply {
-            subscribeData(insertCategory(Categories(0, "Home", IconsForCategories.Home )))
-            subscribeData(insertCategory(Categories(0, "Transportation",  IconsForCategories.TRANSPORTATION )))
-            subscribeData(insertCategory(Categories(0, "Food",  IconsForCategories.FOOD )))
-            subscribeData(insertCategory(Categories(0, "Clothing", IconsForCategories.CLOTHING )))
-            subscribeData(insertCategory(Categories(0, "Shopping",  IconsForCategories.SHOPPING )))
-            subscribeData(insertCategory(Categories(0, "Cake",  IconsForCategories.CAKE )))
-            subscribeData(insertCategory(Categories(0, "Office",  IconsForCategories.OFFICE )))
-            subscribeData(insertCategory(Categories(0, "Entrainment",  IconsForCategories.ENTERTAINMENT )))
-            subscribeData(insertCategory(Categories(0, "Car", IconsForCategories.CAR )))
-            subscribeData(insertCategory(Categories(0, "Electronics", IconsForCategories.ELECTRONIC )))
-            subscribeData(insertCategory(Categories(0, "Beauty",  IconsForCategories.BEAUTY )))
-            subscribeData(insertCategory(Categories(0, "Telephone", IconsForCategories.TELEPHONE)))
-            subscribeData(insertCategory(Categories(0, "Insurance", INSURANCE )))
-            subscribeData(insertCategory(Categories(0, "Health",  IconsForCategories.HEALTH )))
-            subscribeData(insertCategory(Categories(0, "Social",  IconsForCategories.SOCIAL )))
-            subscribeData(insertCategory(Categories(0, "Cigarette",  IconsForCategories.CIGARETTE )))
-            subscribeData(insertCategory(Categories(0, "Resturant",  IconsForCategories.RESTURANT )))
-            subscribeData(insertCategory(Categories(0, "Gift", IconsForCategories.GIFT )))
-            subscribeData(insertCategory(Categories(0, "Snacks",  IconsForCategories.SNACKS )))
-            subscribeData(insertCategory(Categories(0, "Vegetables",  IconsForCategories.VEGETABLES )))
-            subscribeData(insertCategory(Categories(0, "Book", IconsForCategories.BOOK )))
-            subscribeData(insertCategory(Categories(0, "Fruits",  IconsForCategories.FRUITS )))
-            subscribeData(insertCategory(Categories(0, "Pet",  IconsForCategories.PET )))
-            subscribeData(insertCategory(Categories(0, "Baby",  IconsForCategories.BABY )))
-            subscribeData(insertCategory(Categories(0, "Sport", IconsForCategories.SPORT )))
-            subscribeData(insertCategory(Categories(0, "Education",  IconsForCategories.EDUCATION )))
-            subscribeData(insertCategory(Categories(0, "Travel", IconsForCategories.TRAVEL )))
-            subscribeData(insertCategory(Categories(0, "Other",  IconsForCategories.OTHER )))
-        }
-    }
-
-    private fun addSpendingType() {
-        Repository.getAllSpendingType().subscribe {
-            if (it.isNullOrEmpty())
-                insertSpendingType()
-        }
-    }
-
-    private fun insertSpendingType(){
-        Repository.apply {
-            subscribeData(insertSpendingType(SpendingType(0, "Expenses")))
-            subscribeData(insertSpendingType(SpendingType(1, "Income")))
-        }
-    }
 
     private fun loadCategories() {
         observeData(Repository.getAllCategory(),

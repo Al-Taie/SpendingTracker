@@ -8,6 +8,7 @@ import com.watermelon.spendingtracker.model.data.database.relations.UserCategori
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
 import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.utils.IconsForCategories
 
 object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao
@@ -46,4 +47,6 @@ object Repository {
     fun deleteCategory(category: Categories) = categoriesDao.delete(category)
     fun updateCategory(category: Categories) = categoriesDao.update(category)
     fun getAllCategory() = categoriesDao.getAllCategory()
+
+
 }

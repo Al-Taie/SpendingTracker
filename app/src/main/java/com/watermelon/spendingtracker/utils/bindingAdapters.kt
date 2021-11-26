@@ -89,9 +89,9 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
 
 @BindingAdapter(value = ["app:users"])
-fun setUsers(view: MaterialAutoCompleteTextView, data: List<UserWithCategoriesAndSpending>?) {
+fun setUsers(view: MaterialAutoCompleteTextView, data: List<User>?) {
     Log.v("TESTING", data.toString())
-    data?.map { it.user.name }?.let { usersArray ->
+    data?.map { it.name }?.let { usersArray ->
         val adapter = ArrayAdapter(view.context, R.layout.drop_down_item, usersArray)
         view.setAdapter(adapter)
     }

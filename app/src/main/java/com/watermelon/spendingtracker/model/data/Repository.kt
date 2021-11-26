@@ -24,9 +24,9 @@ object Repository {
     fun getUserWithCategoryWithSpending() = userDao.getUsersWithCategoryWithSpending()
 
     //    fun getUserWithSalary() = userDao.getUserWithSalary()
-    fun getUserSalary(userId: Long) = userDao.getUserSalary(userId)
+   // fun getUserSalary(userId: Long) = userDao.getUserSalary(userId)
     fun insertUserWithCategory(user: UserCategoriesCrossRef) = userDao.insertUserWithCategory(user)
-    fun getUserWithSalary() = userDao.getUserWithSalary()
+    fun getUserWithSalary(userId: Long) = userDao.getUserWithSalary(userId)
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)
     fun deleteSalary(salary: Salary) = salaryDao.delete(salary)
     fun updateSalary(salary: Salary) = salaryDao.update(salary)

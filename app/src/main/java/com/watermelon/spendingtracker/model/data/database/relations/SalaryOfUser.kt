@@ -10,7 +10,7 @@ data class SalaryOfUser(
     @Embedded val user: User,
     @Relation(
         parentColumn = "userId",
-        entityColumn = "salaryId"
+        entityColumn = "SalaryId"
 
     )
     val salary: Salary

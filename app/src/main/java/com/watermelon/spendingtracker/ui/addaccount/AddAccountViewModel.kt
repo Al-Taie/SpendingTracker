@@ -26,7 +26,7 @@ class AddAccountViewModel : ViewModel() {
             Repository.insertSalary(
                 Salary(0,
                     it,
-                    userNameAccount.value.toString()
+
                 )
             )
                 .subscribeOn(Schedulers.io())

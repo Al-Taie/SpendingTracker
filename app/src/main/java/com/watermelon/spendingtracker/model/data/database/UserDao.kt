@@ -1,6 +1,7 @@
 package com.watermelon.spendingtracker.model.data.database
 
 import androidx.room.*
+import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.SalaryOfUser
 import com.watermelon.spendingtracker.model.data.database.relations.UserWithCategoriesAndSpending
@@ -42,13 +43,13 @@ interface UserDao {
     fun getAllUsersWithCategories() : Observable<List<UserCategoriesCrossRef>>
 
 
-   @Transaction
-    @Query("SELECT * FROM  TB_USER inner join TB_SALARY WHERE salaryId=:userid")
-    fun getUserSalary(userid: Long): Observable<List<SalaryOfUser>>
+//   @Transaction
+//    @Query("SELECT * FROM  TB_USER inner join TB_SALARY WHERE salaryId=:userid")
+//    fun getUserSalary(userid: Long): Observable<List<SalaryOfUser>>
 
     @Transaction
-    @Query("SELECT * FROM TB_SALARY  WHERE salaryId = 4")
-    fun getUserWithSalary(): Observable<List<SalaryOfUser>>
+    @Query("SELECT * FROM TB_SALARY  WHERE SalaryId = :userid")
+    fun getUserWithSalary(userid: Long): Observable<List<Salary>>
 
 //   @Transaction
 //    @Query("SELECT * FROM UserCategoriesCrossRef WHERE userName=:user and categoriesName=:c")
@@ -57,6 +58,8 @@ interface UserDao {
     @Transaction
     @Query("SELECT * FROM TB_USER inner join TB_SPENDING WHERE userId =spendingId")
     fun getUserWithSpending(): Observable<List<UserWithSpending>>
+
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertUserWithCategory(user: UserCategoriesCrossRef) : Completable
 

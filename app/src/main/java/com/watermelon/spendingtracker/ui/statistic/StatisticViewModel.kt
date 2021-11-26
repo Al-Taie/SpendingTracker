@@ -15,13 +15,13 @@ class StatisticViewModel : ViewModel() {
     private val _users = MutableLiveData<List<User>>()
     val users = _users.asFlow().asLiveData()
 
-    private val _salary = MutableLiveData<List<SalaryOfUser>>()
-    val salary = _salary.asFlow().asLiveData()
+    private val _salary = MutableLiveData<List<Salary>>()
+    var salary = _salary.asFlow().asLiveData()
 
 
     init {
         getAllUsers()
-        getSalary(1)
+        getSalary()
     }
 
     private fun getAllUsers() {
@@ -32,12 +32,14 @@ class StatisticViewModel : ViewModel() {
 
     }
 
-    fun getSalary(id:Long){
-        Repository.getUserWithSalary().observeOn(Schedulers.io())
+    private fun getSalary(){
+        Repository.getUserWithSalary(2).observeOn(Schedulers.io())
             .subscribe({
                 _salary.postValue(it)
+                Log.i("hhhhhh",it.toString())
             }, {})
 
-        Log.i("hhhhhh",salary.value.toString())
+
     }
+
 }

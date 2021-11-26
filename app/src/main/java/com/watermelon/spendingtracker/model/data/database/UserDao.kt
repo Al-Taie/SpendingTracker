@@ -38,10 +38,10 @@ interface UserDao {
     @Transaction
     @Query("SELECT * FROM TB_USER inner join TB_SALARY WHERE userId = salaryId")
     fun getUserWithSalary(): Observable<List<SalaryOfUser>>
-
-   @Transaction
-    @Query("SELECT * FROM UserCategoriesCrossRef WHERE userName=:user and categoriesName=:c")
-    fun getUserWithSalary(user:String,c:String): Observable<List<UserCategoriesCrossRef>>
+//
+//   @Transaction
+//    @Query("SELECT * FROM UserCategoriesCrossRef WHERE userName=:user and categoriesName=:c")
+//    fun getUserWithSalary(user:String,c:String): Observable<List<UserCategoriesCrossRef>>
 
     @Transaction
     @Query("SELECT * FROM TB_USER inner join TB_SPENDING WHERE userId =spendingId")

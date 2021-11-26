@@ -7,7 +7,7 @@ import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
-import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 
 object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao
@@ -23,7 +23,7 @@ object Repository {
     fun getAllUsers() = userDao.getAllUsers()
      fun getAllUsersWithCategories() = userDao.getAllUsersWithCategories()
 
-    fun getUserWithSalary(user: String) = userDao.getUserWithSalary(user)
+    fun getUserWithSalary() = userDao.getUserWithSalary()
     fun insertUserWithCategory(user: UserCategoriesCrossRef)= userDao.insertUserWithCategory(user)
 
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)

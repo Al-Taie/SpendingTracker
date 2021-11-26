@@ -34,9 +34,9 @@ class AddAccountViewModel : ViewModel() {
         }
 
 
-        val getUserWithSalary = Repository.getUserWithSalary("Ammar")
+//        val getUserWithSalary = Repository.getUserWithSalary("Ammar")
 
-        Log.i("userName", getUserWithSalary.toString())
+//        Log.i("userName", getUserWithSalary.toString())
 
     }
 }

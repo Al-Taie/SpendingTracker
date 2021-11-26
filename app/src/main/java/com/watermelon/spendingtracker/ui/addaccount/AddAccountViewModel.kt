@@ -10,11 +10,8 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class AddAccountViewModel : ViewModel() {
 
-
     val userNameAccount = MutableLiveData<String>()
-
     val userSalary = MutableLiveData<String>()
-
 
     fun addUserAccount() {
 

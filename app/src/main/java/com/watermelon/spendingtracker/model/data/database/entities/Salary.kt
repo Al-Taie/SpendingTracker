@@ -9,6 +9,4 @@ data class Salary(
     val salaryId:Long,
     val salaryAmount: String,
     val userName:String,
-
-
 )

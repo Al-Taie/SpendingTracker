@@ -30,7 +30,7 @@
             android:scaleType="centerCrop"
             android:background="@drawable/category_shape"
             app:contentPadding="@dimen/margin16dp"
-            android:src="@drawable/ic_akar_icons_plane"
+            app:setSrc="@{item.iconId}"
             android:layout_marginTop="@dimen/margin8dp"
             android:layout_marginHorizontal="@dimen/margin8dp"
             app:layout_constraintBottom_toBottomOf="parent"

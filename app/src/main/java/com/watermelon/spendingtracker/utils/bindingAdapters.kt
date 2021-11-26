@@ -55,12 +55,8 @@ fun streamObserve(view: View, itemId: Int?, listener: TemplateInteractionListene
 
 @SuppressLint("ResourceAsColor")
 @BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
-fun onClickSelectedItem(
-    view: View,
-    selectedItem: ShapeableImageView?,
-    listener: CategoriesInteractionListener,
-    itemId: Long?
-) {
+fun onClickSelectedItem(view: View, selectedItem: ShapeableImageView?,
+                        listener: CategoriesInteractionListener, itemId: Long?) {
     view.setOnClickListener {
         selectedItem?.setBackgroundColor(R.color.base_color)
         selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
@@ -121,6 +117,15 @@ private fun setCurrentSelection(spinner: Spinner, selectedItem: User?): Boolean 
             return true
         }
     }
-
     return false
 }
+
+@BindingAdapter(value = ["app:setSrc"])
+fun setSrcImg(view: ShapeableImageView, item: IconsForCategories?){
+    item?.let {
+        view.setImageResource(item.icon)
+    }
+}
+
+
+

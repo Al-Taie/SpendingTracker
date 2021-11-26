@@ -7,13 +7,15 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-abstract class BaseViewModel : ViewModel() {
 
+abstract class BaseViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
     fun subscribeData(data: Completable?) {
-        data?.subscribeOn(Schedulers.io())?.subscribe()
+        data?.subscribeOn(Schedulers.io())?.subscribe().apply {
+            compositeDisposable.add(this)
+        }
     }
 
     fun <T> observeData(
@@ -26,7 +28,7 @@ abstract class BaseViewModel : ViewModel() {
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(onSuccess, onError)
             .apply {
-                compositeDisposable
+                compositeDisposable.add(this)
             }
     }
 

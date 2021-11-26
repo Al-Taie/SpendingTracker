@@ -2,8 +2,10 @@ package com.watermelon.spendingtracker.utils
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
-import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.*
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -16,12 +18,10 @@ import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.watermelon.spendingtracker.R
 import com.watermelon.spendingtracker.model.data.State
 import com.watermelon.spendingtracker.model.data.database.entities.User
-import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
-import java.text.DateFormat
-import java.text.SimpleDateFormat
+import com.watermelon.spendingtracker.ui.statistic.CustomAdapter
 import java.util.*
 
 
@@ -54,8 +54,10 @@ fun streamObserve(view: View, itemId: Int?, listener: TemplateInteractionListene
 
 @SuppressLint("ResourceAsColor")
 @BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
-fun onClickSelectedItem(view: View, selectedItem: ShapeableImageView?,
-                        listener: CategoriesInteractionListener, itemId: Long?) {
+fun onClickSelectedItem(
+    view: View, selectedItem: ShapeableImageView?,
+    listener: CategoriesInteractionListener, itemId: Long?
+) {
     view.setOnClickListener {
         selectedItem?.setBackgroundColor(R.color.base_color)
         selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
@@ -88,10 +90,9 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
 
 @BindingAdapter(value = ["app:users"])
-fun setUsers(view: MaterialAutoCompleteTextView, data: List<UserCategoriesCrossRef>?) {
-    Log.v("TESTING", data.toString())
-    data?.map { it.userName }?.let { usersArray ->
-        val adapter = ArrayAdapter(view.context, R.layout.drop_down_item, usersArray)
+fun setUsers(view: MaterialAutoCompleteTextView, data: List<User>?) {
+    data?.let {
+        val adapter = CustomAdapter(view.context, R.layout.drop_down_item, data)
         view.setAdapter(adapter)
     }
 }
@@ -121,7 +122,7 @@ private fun setCurrentSelection(spinner: Spinner, selectedItem: User?): Boolean 
 }
 
 @BindingAdapter(value = ["app:setSrc"])
-fun setSrcImg(view: ShapeableImageView, item: IconsForCategories?){
+fun setSrcImg(view: ShapeableImageView, item: IconsForCategories?) {
     item?.let {
         view.setImageResource(item.icon)
     }

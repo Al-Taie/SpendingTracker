@@ -53,9 +53,9 @@ interface UserDao {
 //    @Query("SELECT * FROM UserCategoriesCrossRef WHERE userName=:user and categoriesName=:c")
 //    fun getUserWithSalary(user:String,c:String): Observable<List<UserCategoriesCrossRef>>
 
-    @Transaction
-    @Query("SELECT * FROM TB_USER inner join TB_SPENDING WHERE userId =spendingId")
-    fun getUserWithSpending(): Observable<List<UserWithSpending>>
+//    @Transaction
+//    @Query("SELECT * FROM TB_USER inner join TB_SPENDING WHERE userId =spendingId")
+//    fun getUserWithSpending(): Observable<List<UserWithSpending>>
 
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
-import com.watermelon.spendingtracker.model.data.domain.Spending
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 import com.watermelon.spendingtracker.ui.base.BaseViewModel
 import com.watermelon.spendingtracker.utils.Constant.ERROR

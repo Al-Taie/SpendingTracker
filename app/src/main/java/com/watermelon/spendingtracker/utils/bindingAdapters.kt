@@ -64,7 +64,7 @@ fun onClickSelectedItem(view: View, selectedItem: ShapeableImageView?,
     }
 }
 
-@BindingAdapter(value = ["listenerDate"])
+@BindingAdapter(value = ["app:listenerDate"])
 fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
     val cal: Calendar = Calendar.getInstance()
@@ -72,8 +72,8 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
     var monthCal = cal.get(Calendar.MONTH)
     var yearCal = cal.get(Calendar.YEAR)
 
-    view.setOnClickListener { v ->
-        DatePickerDialog(view.context, { view, year, monthOfYear, dayOfMonth ->
+    view.setOnClickListener {
+        DatePickerDialog(view.context, { _, year, monthOfYear, dayOfMonth ->
             cal.set(year, monthOfYear, dayOfMonth)
             yearCal = year
             monthCal = monthOfYear

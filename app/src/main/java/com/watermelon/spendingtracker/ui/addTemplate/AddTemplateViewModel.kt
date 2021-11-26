@@ -1,11 +1,13 @@
 package com.watermelon.spendingtracker.ui.addTemplate
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.domain.Spending
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 import com.watermelon.spendingtracker.ui.base.BaseViewModel
+import com.watermelon.spendingtracker.utils.Constant.ERROR
 import com.watermelon.spendingtracker.utils.IconsForCategories
 import com.watermelon.spendingtracker.utils.IconsForCategories.INSURANCE
 import java.util.*
@@ -96,7 +98,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
         categories.postValue(items)
     }
 
-    private fun onNotesFail(error: Throwable) {  }
+    private fun onNotesFail(error: Throwable) { Log.i(ERROR , error.message.toString()) }
 
 
     private fun loadSpendingType() {
@@ -108,7 +110,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
         spendingType.postValue(items)
     }
 
-    private fun onSpendingTypeFail(error: Throwable) {  }
+    private fun onSpendingTypeFail(error: Throwable) { Log.i(ERROR , error.message.toString()) }
 
     fun addSpending() {
         if (checkData()) {

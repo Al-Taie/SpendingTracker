@@ -13,8 +13,8 @@ abstract class BaseViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     fun subscribeData(data: Completable?) {
-        data?.subscribeOn(Schedulers.io())?.subscribe().apply {
-            compositeDisposable.add(this)
+        data?.subscribeOn(Schedulers.io())?.subscribe()?.let {
+            compositeDisposable.add(it)
         }
     }
 
@@ -27,8 +27,8 @@ abstract class BaseViewModel : ViewModel() {
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(onSuccess, onError)
-            .apply {
-                compositeDisposable.add(this)
+            ?.let {
+                compositeDisposable.add(it)
             }
     }
 

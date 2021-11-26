@@ -180,7 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:elevation="2dp"
-            android:text="@{viewmodel.salary.toString()}"
+            android:text="@{viewmodel.salary.get(2).salaryAmount}"
             android:textColor="@color/blue"
             android:textSize="@dimen/text14sp"
             android:textStyle="bold"

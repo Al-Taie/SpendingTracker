@@ -33,7 +33,7 @@ class StatisticViewModel : ViewModel() {
     }
 
     private fun getSalary(){
-        Repository.getUserWithSalary(2).observeOn(Schedulers.io())
+        Repository.getUserWithSalary(2).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _salary.postValue(it)
                 Log.i("hhhhhh",it.toString())

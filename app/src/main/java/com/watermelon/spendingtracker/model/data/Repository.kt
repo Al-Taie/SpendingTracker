@@ -1,5 +1,6 @@
 package com.watermelon.spendingtracker.model.data
 
+import android.util.Log
 import com.watermelon.spendingtracker.model.data.database.SpendingDatabase
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
@@ -8,6 +9,11 @@ import com.watermelon.spendingtracker.model.data.database.relations.UserCategori
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
 import com.watermelon.spendingtracker.model.data.database.entities.Spending
+import com.watermelon.spendingtracker.utils.IconsForCategories
+import com.watermelon.spendingtracker.utils.IconsForCategories.*
+import com.watermelon.spendingtracker.utils.subscribeData
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao
@@ -46,4 +52,47 @@ object Repository {
     fun deleteCategory(category: Categories) = categoriesDao.delete(category)
     fun updateCategory(category: Categories) = categoriesDao.update(category)
     fun getAllCategory() = categoriesDao.getAllCategory()
+
+    fun insertSpendingType(){
+        Repository.apply {
+            insertSpendingType(SpendingType(0, "Expenses")).subscribeData()
+            insertSpendingType(SpendingType(1, "Income")).subscribeData()
+        }
+    }
+
+
+    fun insertCategories(){
+        Repository.apply {
+            Log.i("ssssssss" , "insert")
+            insertCategory(Categories(0, "Home", Home)).subscribeData()
+            insertCategory(Categories(0, "Transportation", TRANSPORTATION)).subscribeData()
+            insertCategory(Categories(0, "Food", FOOD)).subscribeData()
+            insertCategory(Categories(0, "Clothing", CLOTHING)).subscribeData()
+            insertCategory(Categories(0, "Shopping", SHOPPING)).subscribeData()
+            insertCategory(Categories(0, "Cake", CAKE)).subscribeData()
+            insertCategory(Categories(0, "Office", OFFICE)).subscribeData()
+            insertCategory(Categories(0, "Entrainment", ENTERTAINMENT)).subscribeData()
+            insertCategory(Categories(0, "Car", CAR)).subscribeData()
+            insertCategory(Categories(0, "Electronics", ELECTRONIC)).subscribeData()
+            insertCategory(Categories(0, "Beauty", BEAUTY)).subscribeData()
+            insertCategory(Categories(0, "Telephone", TELEPHONE)).subscribeData()
+            insertCategory(Categories(0, "Insurance", INSURANCE)).subscribeData()
+            insertCategory(Categories(0, "Health", HEALTH)).subscribeData()
+            insertCategory(Categories(0, "Social", SOCIAL)).subscribeData()
+            insertCategory(Categories(0, "Cigarette", CIGARETTE)).subscribeData()
+            insertCategory(Categories(0, "Resturant", RESTURANT)).subscribeData()
+            insertCategory(Categories(0, "Gift", GIFT)).subscribeData()
+            insertCategory(Categories(0, "Snacks", SNACKS)).subscribeData()
+            insertCategory(Categories(0, "Vegetables", VEGETABLES)).subscribeData()
+            insertCategory(Categories(0, "Book", BOOK)).subscribeData()
+            insertCategory(Categories(0, "Fruits", FRUITS)).subscribeData()
+            insertCategory(Categories(0, "Pet", PET)).subscribeData()
+            insertCategory(Categories(0, "Baby", BABY)).subscribeData()
+            insertCategory(Categories(0, "Sport", SPORT)).subscribeData()
+            insertCategory(Categories(0, "Education", EDUCATION)).subscribeData()
+            insertCategory(Categories(0, "Travel", TRAVEL)).subscribeData()
+            insertCategory(Categories(0, "Other", OTHER)).subscribeData()
+         }
+    }
 }
+

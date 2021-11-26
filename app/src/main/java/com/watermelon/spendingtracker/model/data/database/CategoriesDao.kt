@@ -7,6 +7,7 @@ import io.reactivex.rxjava3.core.Observable
 
 @Dao
 interface CategoriesDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(category: Categories): Completable
 
@@ -18,7 +19,5 @@ interface CategoriesDao {
 
     @Query("SELECT * FROM TB_CATEGORY")
     fun getAllCategory(): Observable<List<Categories>>
-
-
 
 }

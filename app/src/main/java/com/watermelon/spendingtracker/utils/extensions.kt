@@ -4,6 +4,14 @@ import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import com.watermelon.spendingtracker.R
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.schedulers.Schedulers
+
+
+fun Completable.subscribeData() {
+    this.subscribeOn(
+        Schedulers.io()).subscribe()
+}
 
 fun onNavDestinationSelected(
     itemId: Int,

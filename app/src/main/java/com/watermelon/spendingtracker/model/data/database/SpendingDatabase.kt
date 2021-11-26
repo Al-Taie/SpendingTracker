@@ -14,20 +14,8 @@ import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.model.data.database.relations.CategoriesSpendingCrossRef
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
-@Database(
-    entities = [
-        User::class,
-        Categories::class,
-        UserCategoriesCrossRef::class,
-        Salary::class,
-        Spending::class,
-        SpendingType::class,
-        CategoriesSpendingCrossRef::class
-
-
-    ],
-    version = 1
-)
+@Database(entities = [User::class, Categories::class, UserCategoriesCrossRef::class, Salary::class,
+        Spending::class, SpendingType::class, CategoriesSpendingCrossRef::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class SpendingDatabase : RoomDatabase() {
     abstract val spendDao: SpendingDao

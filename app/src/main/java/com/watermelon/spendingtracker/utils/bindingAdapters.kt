@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.Spinner
+import android.widget.*
+import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
@@ -23,6 +21,7 @@ import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListen
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -64,26 +63,27 @@ fun onClickSelectedItem(view: View, selectedItem: ShapeableImageView?,
     }
 }
 
+@SuppressLint("SimpleDateFormat")
 @BindingAdapter(value = ["app:listenerDate"])
 fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
-    val cal: Calendar = Calendar.getInstance()
-    var dayCal = cal.get(Calendar.DAY_OF_WEEK)
-    var monthCal = cal.get(Calendar.MONTH)
-    var yearCal = cal.get(Calendar.YEAR)
+    val calender: Calendar = Calendar.getInstance()
+    var dayCal = calender.get(Calendar.DAY_OF_WEEK)
+    var monthCal = calender.get(Calendar.MONTH)
+    var yearCal = calender.get(Calendar.YEAR)
 
     view.setOnClickListener {
         DatePickerDialog(view.context, { _, year, monthOfYear, dayOfMonth ->
-            cal.set(year, monthOfYear, dayOfMonth)
+            calender.set(year, monthOfYear, dayOfMonth)
             yearCal = year
             monthCal = monthOfYear
             dayCal = dayOfMonth
 
-            listener.setSpendingDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(cal.time))
+            val date = Date.from(calender.toInstant())
+            listener.setSpendingDate(date)
 
         }, yearCal, monthCal, dayCal).show()
     }
-
 }
 
 
@@ -127,5 +127,14 @@ fun setSrcImg(view: ShapeableImageView, item: IconsForCategories?){
     }
 }
 
-
+@BindingAdapter(value = [ "checkAndInsert" ])
+fun checkDataToInsert(view: AppCompatButton, checkAndInsert: () -> Boolean ) {
+    view.setOnClickListener {
+        if(checkAndInsert()) {
+            Toast.makeText(view.context , "Successfully entered", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(view.context , "All data must be entered", Toast.LENGTH_LONG).show()
+        }
+    }
+}
 

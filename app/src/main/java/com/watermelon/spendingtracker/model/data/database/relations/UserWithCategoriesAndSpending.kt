@@ -11,7 +11,7 @@ data class UserWithCategoriesAndSpending(
         entity = Categories::class,
         parentColumn = "userId",
         entityColumn = "categoriesId",
+    )
 
-    )
     val categories: List<CategoriesWithSpending>
-    )
+)

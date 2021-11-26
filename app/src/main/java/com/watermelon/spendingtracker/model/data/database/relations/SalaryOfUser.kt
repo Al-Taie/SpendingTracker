@@ -11,7 +11,6 @@ data class SalaryOfUser(
     @Relation(
         parentColumn = "name",
         entityColumn = "salaryAmount"
-
     )
     val salary: Salary
 )

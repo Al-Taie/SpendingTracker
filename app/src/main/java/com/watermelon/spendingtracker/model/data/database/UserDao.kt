@@ -49,7 +49,7 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM TB_SALARY  WHERE SalaryId = :userid")
-    fun getUserWithSalary(userid: Long): Observable<List<Salary>>
+    fun getUserWithSalary(userid: Long): Observable<Salary>
 
 //   @Transaction
 //    @Query("SELECT * FROM UserCategoriesCrossRef WHERE userName=:user and categoriesName=:c")

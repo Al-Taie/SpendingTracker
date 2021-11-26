@@ -11,17 +11,17 @@ import com.watermelon.spendingtracker.model.data.database.relations.UserWithCate
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class StatisticViewModel : ViewModel() {
+class StatisticViewModel : ViewModel(), StatisticInteractionListener {
     private val _users = MutableLiveData<List<User>>()
     val users = _users.asFlow().asLiveData()
 
-    private val _salary = MutableLiveData<List<Salary>>()
+    private val _salary = MutableLiveData<Salary>()
     var salary = _salary.asFlow().asLiveData()
 
 
     init {
         getAllUsers()
-        getSalary()
+        getSalary(1)
     }
 
     private fun getAllUsers() {
@@ -32,14 +32,15 @@ class StatisticViewModel : ViewModel() {
 
     }
 
-    private fun getSalary(){
-        Repository.getUserWithSalary(2).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
+    private fun getSalary(userID: Long){
+        Repository.getUserWithSalary(userID).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _salary.postValue(it)
-                Log.i("hhhhhh",it.toString())
             }, {})
+    }
 
-
+    override fun onItemClicked(id: Long) {
+        getSalary(id)
     }
 
 }

@@ -19,6 +19,7 @@ import com.watermelon.spendingtracker.R
 import com.watermelon.spendingtracker.model.data.State
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
+import com.watermelon.spendingtracker.model.data.database.relations.UserWithCategoriesAndSpending
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
@@ -88,9 +89,9 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
 
 
 @BindingAdapter(value = ["app:users"])
-fun setUsers(view: MaterialAutoCompleteTextView, data: List<UserCategoriesCrossRef>?) {
+fun setUsers(view: MaterialAutoCompleteTextView, data: List<UserWithCategoriesAndSpending>?) {
     Log.v("TESTING", data.toString())
-    data?.map { it.userName }?.let { usersArray ->
+    data?.map { it.user.name }?.let { usersArray ->
         val adapter = ArrayAdapter(view.context, R.layout.drop_down_item, usersArray)
         view.setAdapter(adapter)
     }

@@ -3,11 +3,10 @@ package com.watermelon.spendingtracker.model.data
 import com.watermelon.spendingtracker.model.data.database.SpendingDatabase
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.model.data.domain.SpendingType
-
-import com.watermelon.spendingtracker.model.data.database.entities.Spending
 
 object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao
@@ -21,10 +20,10 @@ object Repository {
     fun deleteUser(user: User) = userDao.delete(user)
     fun updateUser(user: User) = userDao.update(user)
     fun getAllUsers() = userDao.getAllUsers()
-     fun getAllUsersWithCategories() = userDao.getAllUsersWithCategories()
-
+    fun getAllUsersWithCategories() = userDao.getAllUsersWithCategories()
+    fun getUserWithCategoryWithSpending() = userDao.getUsersWithCategoryWithSpending()
     fun getUserWithSalary() = userDao.getUserWithSalary()
-    fun insertUserWithCategory(user: UserCategoriesCrossRef)= userDao.insertUserWithCategory(user)
+    fun insertUserWithCategory(user: UserCategoriesCrossRef) = userDao.insertUserWithCategory(user)
 
     fun insertSalary(salary: Salary) = salaryDao.insert(salary)
     fun deleteSalary(salary: Salary) = salaryDao.delete(salary)
@@ -35,7 +34,7 @@ object Repository {
     fun insertSpending(spending: Spending) = spendingDao.insert(spending)
     fun deleteSpending(spending: Spending) = spendingDao.delete(spending)
     fun updateSpending(spending: Spending) = spendingDao.update(spending)
-     fun getAllSpending() = spendingDao.getAllSpending()
+    fun getAllSpending() = spendingDao.getAllSpending()
 
     fun insertSpendingType(spendingType: SpendingType) = spendingTypesDao.insert(spendingType)
     fun deleteSpendingType(spendingType: SpendingType) = spendingTypesDao.delete(spendingType)

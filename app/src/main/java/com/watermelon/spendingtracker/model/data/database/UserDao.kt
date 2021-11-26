@@ -25,13 +25,16 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM TB_USER")
-    fun getUsersWithPlaylistsAndSongs(): List<UserWithCategoriesAndSpending>
+    fun getUsers():Observable< List<UserWithCategoriesAndSpending>>
+
     @Query("SELECT * FROM TB_USER")
     fun getAllUsers() : List<User>
 
-//    @Transaction
-//    @Query("SELECT * FROM TB_USER,TB_CATEGORY,TB_SPENDING")
-//    fun getUsersWithPlaylistsAndSongs(): List<UserWithCategoriesAndSpending>
+    @Transaction
+    @Query("SELECT * FROM TB_USER,TB_CATEGORY,TB_SPENDING")
+    fun getUsersWithCategoryWithSpending(): Observable<List<UserWithCategoriesAndSpending>>
+
+
     @Query("SELECT * FROM UserCategoriesCrossRef")
     fun getAllUsersWithCategories() : Observable<List<UserCategoriesCrossRef>>
 

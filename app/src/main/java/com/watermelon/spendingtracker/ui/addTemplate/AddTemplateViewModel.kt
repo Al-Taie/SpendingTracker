@@ -114,9 +114,12 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
 
     fun addSpending() {
         if (checkData()) {
-            Repository.insertSpending(
+           subscribeData( Repository.insertSpending(
                 Spending(0, categoriesSelected.value!!, amount.value!!.toDouble(),
-                    "IQD", memo.value!!, description.value!!, Date(dateSpending.value)))
+                    "IQD", memo.value!!, description.value!!, Date(dateSpending.value))))
+
+            Log.i("haha",Repository.insertSpending( Spending(0, categoriesSelected.value!!, amount.value!!.toDouble(),
+                "IQD", memo.value!!, description.value!!, Date(dateSpending.value))).toString())
         }
     }
 

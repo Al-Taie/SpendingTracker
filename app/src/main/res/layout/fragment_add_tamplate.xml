@@ -42,46 +42,27 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.google.android.material.chip.ChipGroup
+        <com.google.android.material.chip.Chip
             android:id="@+id/chip_group"
+            style="@style/Widget.MyApp.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
+            android:clickable="false"
+            android:background="@drawable/chip_shape"
+            app:chipCornerRadius="6dp"
+            app:chipStartPadding="@dimen/padding16dp"
+            app:chipEndPadding="@dimen/padding16dp"
+            android:text="@string/expenses"
+            android:textColor="@color/primary_color"
             android:clipToPadding="false"
             android:layout_marginTop="@dimen/margin24dp"
             android:paddingHorizontal="@dimen/margin4dp"
-            android:background="@drawable/group_chips_shape"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:selectionRequired="true"
-            app:singleSelection="true">
+            app:layout_constraintTop_toBottomOf="@+id/textView"/>
 
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.MyApp.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:background="@drawable/chip_shape"
-                app:chipCornerRadius="6dp"
-                app:chipStartPadding="@dimen/padding16dp"
-                app:chipEndPadding="@dimen/padding16dp"
 
-                tools:text="Expenses"
-                android:textColor="@color/primary_color" />
-
-            <com.google.android.material.chip.Chip
-                style="@style/Widget.MyApp.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="Income"
-                app:chipStartPadding="@dimen/padding16dp"
-                app:chipEndPadding="@dimen/padding16dp"
-
-                android:background="@drawable/chip_shape"
-                app:chipCornerRadius="6dp"
-                android:textColor="@color/primary_color" />
-
-        </com.google.android.material.chip.ChipGroup>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categories_recycler_view"
@@ -134,7 +115,7 @@
                 android:drawableTint="@color/white"
                 android:paddingHorizontal="@dimen/margin8dp"
                 android:paddingVertical="@dimen/padding4dp"
-                android:onClick="@{()->viewModel.addSpending()}"
+                android:onClick="@{()->viewModel.onItemClicked()}"
                 android:text="Add"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText2"

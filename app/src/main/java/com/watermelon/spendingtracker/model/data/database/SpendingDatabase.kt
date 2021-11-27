@@ -6,14 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.watermelon.spendingtracker.model.data.Converters
+import com.watermelon.spendingtracker.model.data.database.entities.Category
 import com.watermelon.spendingtracker.model.data.database.entities.Spending
 
 
-@Database(entities = [
-        Spending::class], version = 1)
+@Database(entities = [Spending::class, Category::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class SpendingDatabase : RoomDatabase() {
     abstract val spendDao: SpendingDao
+    abstract val categoriesDao: CategoriesDao
 
 
     companion object {

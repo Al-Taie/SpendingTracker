@@ -4,5 +4,6 @@ import java.util.*
 
 
 interface TemplateInteractionListener {
-fun onItemClick()
+    fun onItemClicked()
+    fun setSpendingDate(date: Date?)
 }

@@ -17,16 +17,9 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         changeChartShape()
 
-        binding.selectedMeme.apply {
-            setOnItemClickListener { _, _, _, _ ->
-                viewModel.onItemClicked((adapter as CustomAdapter).userID)
-            }
-        }
-
         viewModel.spending.observe(this, {binding.totalValue.text = (it?:0.0).toString()})
         viewModel.salary.observe(this, {binding.incomeValue.text = it.salaryAmount})
-
-        viewModel.users.observe(this, { setUsers(binding.selectedMeme, it) })
+        viewModel.users.observe(this, { setUsers(binding.selectedMeme, it, viewModel) })
     }
 
     private fun changeChartShape() {

@@ -1,5 +1,6 @@
 package com.watermelon.spendingtracker.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
@@ -17,6 +18,7 @@ class HomeViewModel : BaseViewModel(), TemplateInteractionListener {
     init {
         addExpense()
         getAllUsers()
+        observeData(Repository.getUserWithCategoryWithSpending(), { Log.v("TESTING", it.toString())}, {})
     }
 
     private fun addExpense() {

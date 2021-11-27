@@ -4,13 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import com.watermelon.spendingtracker.model.data.Repository
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.ui.base.BaseViewModel
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class HomeViewModel : BaseViewModel(), TemplateInteractionListener {
     val expense = MutableLiveData<String>()
-    private val _users = MutableLiveData<List<UserCategoriesCrossRef>>()
+    private val _users = MutableLiveData<List<Spending>>()
     val users = _users.asFlow().asLiveData()
 
     init {
@@ -25,6 +26,6 @@ class HomeViewModel : BaseViewModel(), TemplateInteractionListener {
     }
 
     private fun getAllUsers() =
-        observeData(Repository.getAllUsersWithCategories(), { _users.postValue(it) }, {})
+        observeData(Repository.getAllSpending(), { _users.postValue(it) }, {})
 
 }

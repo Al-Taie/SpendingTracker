@@ -7,7 +7,6 @@ import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.ui.base.BaseViewModel
-import io.reactivex.rxjava3.schedulers.Schedulers
 
 class StatisticViewModel : BaseViewModel(), StatisticInteractionListener {
     private val _users = MutableLiveData<List<User>>()
@@ -16,7 +15,7 @@ class StatisticViewModel : BaseViewModel(), StatisticInteractionListener {
     private val _salary = MutableLiveData<Salary>()
     var salary = _salary.asFlow().asLiveData()
 
-    private val _spending= MutableLiveData<Double>()
+    private val _spending = MutableLiveData<Double>()
     var spending = _spending.asFlow().asLiveData()
 
 
@@ -29,21 +28,11 @@ class StatisticViewModel : BaseViewModel(), StatisticInteractionListener {
 
     private fun getSalary(userID: Long) =
         observeData(Repository.getUserWithSalary(userID), { _salary.postValue(it) }, {})
-    }
 
-    private fun getSalary(userID: Long){
-        Repository.getUserWithSalary(userID).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                _salary.postValue(it)
-            }, {})
-    }
 
-    private fun getSumOfSpending(userID: Long){
-        Repository.getSumOfSpending(userID).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                _spending.postValue(it)
-            }, {})
-    }
+    private fun getSumOfSpending(userID: Long) =
+        observeData(Repository.getSumOfSpending(userID), { _spending.postValue(it) }, {})
+
 
     override fun onItemClicked(id: Long) {
         getSalary(id)

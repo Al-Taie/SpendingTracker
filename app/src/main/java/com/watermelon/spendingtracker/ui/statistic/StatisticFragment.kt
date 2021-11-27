@@ -23,6 +23,7 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
             }
         }
 
+        viewModel.spending.observe(this, {binding.totalValue.text = (it?:0.0).toString()})
         viewModel.salary.observe(this, {binding.incomeValue.text = it.salaryAmount})
 
         viewModel.users.observe(this, { setUsers(binding.selectedMeme, it) })

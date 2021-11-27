@@ -19,14 +19,13 @@ class StatisticViewModel : ViewModel(), StatisticInteractionListener {
     private val _salary = MutableLiveData<Salary>()
     var salary = _salary.asFlow().asLiveData()
 
-    private val _spending= MutableLiveData<Spending>()
+    private val _spending= MutableLiveData<Double>()
     var spending = _spending.asFlow().asLiveData()
 
 
     init {
         getAllUsers()
-        getSalary(1)
-        getSumOfSpending(1)
+        onItemClicked(1)
     }
 
     private fun getAllUsers() {
@@ -53,6 +52,7 @@ class StatisticViewModel : ViewModel(), StatisticInteractionListener {
 
     override fun onItemClicked(id: Long) {
         getSalary(id)
+        getSumOfSpending(id)
     }
 
 }

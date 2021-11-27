@@ -35,6 +35,7 @@ object Repository {
     fun updateSalary(salary: Salary) = salaryDao.update(salary)
     // fun getAllSalary() = salaryDao.getAllSalary()
 
+    fun getSumOfSpending(userId: Long)= spendingDao.getSumOfSpending(userId)
 
     fun insertSpending(spending: Spending) = spendingDao.insert(spending)
     fun deleteSpending(spending: Spending) = spendingDao.delete(spending)

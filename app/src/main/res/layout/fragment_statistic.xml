@@ -194,7 +194,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:elevation="2dp"
-            android:text="100 IQD"
+            android:text="@{String.valueOf(viewmodel.spending)}"
             android:textColor="@color/red"
             android:textSize="@dimen/text14sp"
             android:textStyle="bold"

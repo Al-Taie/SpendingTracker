@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.database.entities.Salary
+import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.model.data.database.relations.SalaryOfUser
 import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
@@ -18,10 +19,14 @@ class StatisticViewModel : ViewModel(), StatisticInteractionListener {
     private val _salary = MutableLiveData<Salary>()
     var salary = _salary.asFlow().asLiveData()
 
+    private val _spending= MutableLiveData<Spending>()
+    var spending = _spending.asFlow().asLiveData()
+
 
     init {
         getAllUsers()
         getSalary(1)
+        getSumOfSpending(1)
     }
 
     private fun getAllUsers() {
@@ -36,6 +41,13 @@ class StatisticViewModel : ViewModel(), StatisticInteractionListener {
         Repository.getUserWithSalary(userID).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 _salary.postValue(it)
+            }, {})
+    }
+
+    private fun getSumOfSpending(userID: Long){
+        Repository.getSumOfSpending(userID).observeOn(Schedulers.io()).subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _spending.postValue(it)
             }, {})
     }
 

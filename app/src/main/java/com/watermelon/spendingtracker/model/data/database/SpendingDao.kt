@@ -19,4 +19,7 @@ interface SpendingDao {
 
     @Query("SELECT * FROM TB_SPENDING")
     fun getAllSpending() : Observable<List<Spending>>
+
+    @Query("SELECT SUM(amount) FROM TB_SPENDING")
+    fun getSumOfSpending(userID:Long):Observable<Spending>
 }

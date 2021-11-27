@@ -2,7 +2,6 @@ package com.watermelon.spendingtracker.ui.addTemplate
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.watermelon.spendingtracker.model.data.Repository
 import com.watermelon.spendingtracker.model.data.Repository.getAllCategory
 import com.watermelon.spendingtracker.model.data.Repository.insertCategories
 import com.watermelon.spendingtracker.model.data.Repository.insertSpending
@@ -20,7 +19,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
     var dateSpending = MutableLiveData<Date?>()
     var categories = MutableLiveData<List<Category>>()
     var description = MutableLiveData<String?>()
-    private var categoriesSelected = MutableLiveData<Long>(0)
+    private var categorySelected = MutableLiveData<Category?>(null)
 
     init {
         checkAndAddCategories()
@@ -66,8 +65,8 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
                 memo.value,
                 description.value,
                 Date(),
-                " categoriesName.",
-                0
+                categorySelected.value?.categoryName,
+                categorySelected.value?.iconId,
             )
         ).subscribeData()
     }
@@ -80,8 +79,8 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
         date?.let { dateSpending.postValue(it) }
     }
 
-    override fun onClickCategories(id: Long?) {
-        id?.let { categoriesSelected.postValue(it) }
+    override fun onItemClicked(id: Category?) {
+        id?.let { categorySelected.postValue(it) }
     }
 
 }

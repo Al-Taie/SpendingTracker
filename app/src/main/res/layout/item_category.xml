@@ -20,7 +20,7 @@
         android:layout_margin="@dimen/margin4dp"
         app:selectedItem="@{itemCategory}"
         app:listener="@{listener}"
-        app:stream="@{item.categoryId}"
+        app:stream="@{item}"
         android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
@@ -11,17 +12,17 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.watermelon.spendingtracker.R
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
-import com.watermelon.spendingtracker.ui.statistic.StatisticInteractionListener
 import java.util.*
 
 import androidx.databinding.InverseBindingAdapter
 
 import androidx.databinding.InverseBindingListener
+import com.watermelon.spendingtracker.model.data.database.entities.Category
+import java.text.SimpleDateFormat
 
 
 @BindingAdapter(value = ["app:items"])
@@ -35,12 +36,12 @@ fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
 @BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
 fun onClickSelectedItem(
     view: View, selectedItem: ShapeableImageView?,
-    listener: CategoriesInteractionListener, itemId: Long?
+    listener: CategoriesInteractionListener, item: Category?
 ) {
     view.setOnClickListener {
             selectedItem?.setBackgroundColor(R.color.base_color)
             selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
-            listener.onClickCategories(itemId)
+            listener.onItemClicked(item)
     }
 
 }
@@ -62,7 +63,7 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
             dayCal = dayOfMonth
 
             val date = Date.from(calender.toInstant())
-//            listener.setSpendingDate(date)
+            listener.setSpendingDate(date)
 
         }, yearCal, monthCal, dayCal).show()
     }
@@ -114,3 +115,8 @@ fun setListener(view: AppCompatEditText, listener: InverseBindingListener?) {
     }
 }
 
+@SuppressLint("SimpleDateFormat")
+@BindingAdapter(value = ["app:date"])
+fun setDate(view: TextView, date: Date?) {
+    date?.let { view.text = SimpleDateFormat("MMM dd, yyyy hh:mm a").format(date) }
+}

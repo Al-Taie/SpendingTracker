@@ -115,7 +115,7 @@
                 android:drawableTint="@color/white"
                 android:paddingHorizontal="@dimen/margin8dp"
                 android:paddingVertical="@dimen/padding4dp"
-                android:onClick="@{()->viewModel.onItemClicked()}"
+                app:checkAndInsert="@{() -> viewModel.checkAndInsertData()}"
                 android:text="Add"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText2"

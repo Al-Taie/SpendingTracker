@@ -21,11 +21,13 @@ abstract class BaseViewModel : ViewModel() {
     fun <T> observeData(
         observable: Observable<T>?,
         onSuccess: (T) -> Unit,
-        onError: (Throwable) -> Unit
+        onError: (Throwable) -> Unit,
+        onComplete: (() -> Unit)? = {}
     ) {
         observable
             ?.subscribeOn(Schedulers.io())
             ?.observeOn(AndroidSchedulers.mainThread())
+            ?.doFinally(onComplete)
             ?.subscribe(onSuccess, onError)
             ?.let {
                 compositeDisposable.add(it)

@@ -40,17 +40,11 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
 
 
     private fun checkAndAddCategories() {
-        getAllCategory().subscribe {
-            if (it.isNullOrEmpty())
-                insertCategories()
-        }
+        observeData(getAllCategory(), {if (it.isNullOrEmpty()) insertCategories()}, {})
     }
 
     private fun checkAndAddSpendingType() {
-        getAllSpendingType().subscribe {
-            if (it.isNullOrEmpty())
-                insertSpendingType()
-        }
+        observeData(getAllSpendingType(), {if (it.isNullOrEmpty()) insertSpendingType()}, {})
     }
 
     private fun loadCategories() {

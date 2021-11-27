@@ -14,13 +14,12 @@ class AddAccountViewModel : ViewModel() {
     val userSalary = MutableLiveData<String>()
 
     fun addUserAccount() {
-
         userNameAccount.value?.let {
             Repository.insertUser(
                 User(0,it)
             )
                 .subscribeOn(Schedulers.io())
-                .subscribe()
+                .subscribe({}, {})
         }
         userSalary.value?.let {
             Repository.insertSalary(
@@ -30,7 +29,7 @@ class AddAccountViewModel : ViewModel() {
                 )
             )
                 .subscribeOn(Schedulers.io())
-                .subscribe()
+                .subscribe({}, {})
         }
 
 

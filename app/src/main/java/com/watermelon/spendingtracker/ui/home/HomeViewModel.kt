@@ -24,7 +24,7 @@ class HomeViewModel : BaseViewModel(), TemplateInteractionListener {
     private fun addExpense() {
         Repository.insertUserWithCategory(UserCategoriesCrossRef(5, "Tanager", 1, "Test"))
             .subscribeOn(Schedulers.io())
-            .subscribe()
+            .subscribe({}, {})
     }
 
     private fun getAllUsers() =

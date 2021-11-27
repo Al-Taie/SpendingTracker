@@ -13,7 +13,7 @@ abstract class BaseViewModel : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     fun subscribeData(data: Completable?) {
-        data?.subscribeOn(Schedulers.io())?.subscribe()?.let {
+        data?.subscribeOn(Schedulers.io())?.subscribe({}, {})?.let {
             compositeDisposable.add(it)
         }
     }

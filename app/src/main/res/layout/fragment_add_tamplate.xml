@@ -65,9 +65,7 @@
                 app:chipCornerRadius="6dp"
                 app:chipStartPadding="@dimen/padding16dp"
                 app:chipEndPadding="@dimen/padding16dp"
-                app:listener="@{viewModel}"
-                app:stream="@{viewModel.spendingType[0].id}"
-                android:text="@{viewModel.spendingType[0].value}"
+
                 tools:text="Expenses"
                 android:textColor="@color/primary_color" />
 
@@ -78,9 +76,7 @@
                 tools:text="Income"
                 app:chipStartPadding="@dimen/padding16dp"
                 app:chipEndPadding="@dimen/padding16dp"
-                app:listener="@{viewModel}"
-                app:stream="@{viewModel.spendingType[1].id}"
-                android:text="@{viewModel.spendingType[1].value}"
+
                 android:background="@drawable/chip_shape"
                 app:chipCornerRadius="6dp"
                 android:textColor="@color/primary_color" />
@@ -137,8 +133,8 @@
                 android:drawableStart="@drawable/ic_baseline_add_24"
                 android:drawableTint="@color/white"
                 android:paddingHorizontal="@dimen/margin8dp"
-                app:checkAndInsert="@{() -> viewModel.checkAndInsertData()}"
                 android:paddingVertical="@dimen/padding4dp"
+                android:onClick="@{()->viewModel.addSpending()}"
                 android:text="Add"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText2"

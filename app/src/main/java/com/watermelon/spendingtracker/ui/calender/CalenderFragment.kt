@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.watermelon.spendingtracker.databinding.FragmentCalenderBinding
-import com.watermelon.spendingtracker.ui.addTemplate.CategoriesAdapter
 import com.watermelon.spendingtracker.ui.base.BaseFragment
 
 class CalenderFragment : BaseFragment<FragmentCalenderBinding>() {
@@ -18,6 +17,6 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.calenderRecycler.adapter = CalenderAdapter(emptyList(), viewModel)
+//        binding.calenderRecycler.adapter = CalenderAdapter(emptyList(), viewModel)
     }
 }

@@ -36,26 +36,26 @@
         <!--            app:layout_constraintBottom_toBottomOf="@+id/user_name"-->
         <!--            app:layout_constraintStart_toEndOf="@id/user_name"-->
         <!--            app:layout_constraintTop_toTopOf="@id/user_name" />-->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/spinner"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/spinner"-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
 
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                android:id="@+id/selected_meme"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textAutoComplete"
-                app:users="@{viewmodel.users}"
-                android:text="user"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+<!--            <com.google.android.material.textfield.MaterialAutoCompleteTextView-->
+<!--                android:id="@+id/selected_meme"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:inputType="textAutoComplete"-->
+<!--                app:users="@{viewmodel.users}"-->
+<!--                android:text="user"-->
+<!--                tools:ignore="LabelFor" />-->
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chip_group"
@@ -69,7 +69,7 @@
             android:paddingEnd="@dimen/padding16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintTop_toTopOf="parent"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -180,7 +180,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:elevation="2dp"
-            android:text="@{viewmodel.salary.salaryAmount}"
             tools:text="2000"
             android:textColor="@color/blue"
             android:textSize="@dimen/text14sp"
@@ -194,7 +193,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:elevation="2dp"
-            android:text="@{String.valueOf(viewmodel.spending)}"
+          android:text="@{viewmodel.spending.toString()}"
             android:textColor="@color/red"
             android:textSize="@dimen/text14sp"
             android:textStyle="bold"
@@ -207,7 +206,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/margin16dp"
             android:elevation="2dp"
-            android:text="@{viewmodel.spending.toString()}"
+            android:text="100"
             android:textColor="@color/base_color"
             android:textSize="@dimen/text14sp"
             android:textStyle="bold"

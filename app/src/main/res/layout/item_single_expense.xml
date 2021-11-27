@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.watermelon.spendingtracker.model.data.database.entities.Categories" />
+            type="com.watermelon.spendingtracker.model.data.database.entities.Spending" />
 
         <variable
             name="listener"

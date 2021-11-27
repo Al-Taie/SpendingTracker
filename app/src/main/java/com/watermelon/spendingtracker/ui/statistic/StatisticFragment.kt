@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.watermelon.spendingtracker.databinding.FragmentStatisticBinding
 import com.watermelon.spendingtracker.ui.base.BaseFragment
-import com.watermelon.spendingtracker.utils.setUsers
 
 class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
     override val viewModel: StatisticViewModel by activityViewModels()
@@ -18,8 +17,6 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
         changeChartShape()
 
         viewModel.spending.observe(this, {binding.totalValue.text = (it?:0.0).toString()})
-        viewModel.salary.observe(this, {binding.incomeValue.text = it.salaryAmount})
-        viewModel.users.observe(this, { setUsers(binding.selectedMeme, it, viewModel) })
     }
 
     private fun changeChartShape() {

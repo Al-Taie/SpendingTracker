@@ -6,24 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.watermelon.spendingtracker.model.data.Converters
-import com.watermelon.spendingtracker.model.data.database.entities.Categories
-import com.watermelon.spendingtracker.model.data.database.entities.Salary
-import com.watermelon.spendingtracker.model.data.database.entities.User
-import com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef
 import com.watermelon.spendingtracker.model.data.database.entities.Spending
-import com.watermelon.spendingtracker.model.data.database.relations.CategoriesSpendingCrossRef
-import com.watermelon.spendingtracker.model.data.domain.SpendingType
 
-@Database(entities = [User::class, Categories::class, UserCategoriesCrossRef::class, Salary::class,
-        Spending::class, SpendingType::class, CategoriesSpendingCrossRef::class], version = 1)
+
+@Database(entities = [
+        Spending::class], version = 1)
 @TypeConverters(Converters::class)
 abstract class SpendingDatabase : RoomDatabase() {
     abstract val spendDao: SpendingDao
-    abstract val userDao: UserDao
-    abstract val categoriesDao: CategoriesDao
 
-    abstract val spendingTypesDao: SpendingTypesDao
-    abstract val salaryDao: SalaryDao
 
     companion object {
         private const val DB_NAME = "DB_SPENDING"

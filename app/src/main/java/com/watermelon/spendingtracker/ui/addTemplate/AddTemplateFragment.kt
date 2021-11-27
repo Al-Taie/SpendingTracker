@@ -15,8 +15,8 @@ class AddTemplateFragment : BaseFragment<FragmentAddTamplateBinding>() {
     override val inflate: (LayoutInflater, ViewGroup?, attachToRoot: Boolean) ->
     FragmentAddTamplateBinding = FragmentAddTamplateBinding::inflate
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.categoriesRecyclerView.adapter = CategoriesAdapter(emptyList(), viewModel)
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        binding.categoriesRecyclerView.adapter = CategoriesAdapter(emptyList(), viewModel)
+//    }
 }

@@ -8,28 +8,19 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.watermelon.spendingtracker.R
-import com.watermelon.spendingtracker.model.data.State
-import com.watermelon.spendingtracker.model.data.database.entities.User
 import com.watermelon.spendingtracker.ui.addTemplate.CategoriesInteractionListener
 import com.watermelon.spendingtracker.ui.addTemplate.TemplateInteractionListener
 import com.watermelon.spendingtracker.ui.base.BaseAdapter
-import com.watermelon.spendingtracker.ui.statistic.CustomAdapter
 import com.watermelon.spendingtracker.ui.statistic.StatisticInteractionListener
 import java.util.*
-import android.widget.TextView
 
 import androidx.databinding.InverseBindingAdapter
 
-import android.text.Spanned
-import android.util.Log
-import android.widget.EditText
-import androidx.core.widget.doOnTextChanged
 import androidx.databinding.InverseBindingListener
 
 
@@ -38,9 +29,7 @@ fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
     (view?.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
 }
 
-@BindingAdapter(value = ["app:stream", "app:listener"], requireAll = false)
-fun streamObserve(view: View, itemId: Int?, listener: TemplateInteractionListener?) =
-    view.setOnClickListener { listener?.setSpendingType(itemId) }
+
 
 @SuppressLint("ResourceAsColor")
 @BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
@@ -73,27 +62,13 @@ fun setDateCalender(view: ImageView, listener: TemplateInteractionListener) {
             dayCal = dayOfMonth
 
             val date = Date.from(calender.toInstant())
-            listener.setSpendingDate(date)
+//            listener.setSpendingDate(date)
 
         }, yearCal, monthCal, dayCal).show()
     }
 }
 
 
-@BindingAdapter(value = ["app:users", "app:listener"], requireAll = false)
-fun setUsers(
-    view: MaterialAutoCompleteTextView, data: List<User>?,
-    listener: StatisticInteractionListener?
-) {
-    data?.let {
-        view.apply {
-            setAdapter(CustomAdapter(view.context, R.layout.drop_down_item, data))
-            setOnItemClickListener { _, _, _, _ ->
-                listener?.onItemClicked((this.adapter as CustomAdapter).userID)
-            }
-        }
-    }
-}
 
 @BindingAdapter(value = ["app:image"])
 fun setImage(view: ShapeableImageView, iconID: Int?) {

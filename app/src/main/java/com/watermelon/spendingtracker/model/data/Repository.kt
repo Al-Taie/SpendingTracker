@@ -22,6 +22,10 @@ object Repository {
 
     fun getAllCategory() = categoriesDao.getAllCategory()
 
+    fun getAllUserCategoriesName() = spendingDao.getAllUserCategoriesName()
+
+    fun getSumOfSpendingByCategoryName(categoryName: String) = spendingDao.getSumOfSpendingByCategoryName(categoryName)
+
     fun insertCategories() {
         IconsForCategories.values().forEach {
             insertCategory(Category(0, it.title, it.iconID)).subscribeData()

@@ -31,7 +31,6 @@ fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
 }
 
 
-
 @SuppressLint("ResourceAsColor")
 @BindingAdapter(value = ["app:selectedItem", "app:listener", "app:stream"])
 fun onClickSelectedItem(
@@ -45,7 +44,6 @@ fun onClickSelectedItem(
     }
 
 }
-
 
 @SuppressLint("SimpleDateFormat")
 @BindingAdapter(value = ["app:listenerDate"])

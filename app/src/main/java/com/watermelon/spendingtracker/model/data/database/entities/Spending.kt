@@ -13,6 +13,6 @@ data class Spending(
     val memo: String?,
     val description: String?,
     val date: Date?,
-    val categoriesName: String?,
+    val categoryName: String?,
     val iconId: Int?
 )

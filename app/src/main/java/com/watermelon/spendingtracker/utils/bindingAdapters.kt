@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
@@ -21,6 +22,16 @@ import com.watermelon.spendingtracker.ui.base.BaseAdapter
 import com.watermelon.spendingtracker.ui.statistic.CustomAdapter
 import com.watermelon.spendingtracker.ui.statistic.StatisticInteractionListener
 import java.util.*
+import android.widget.TextView
+
+import androidx.databinding.InverseBindingAdapter
+
+import android.text.Spanned
+import android.util.Log
+import android.widget.EditText
+import androidx.core.widget.doOnTextChanged
+import androidx.databinding.InverseBindingListener
+
 
 @BindingAdapter(value = ["app:items"])
 fun <T> setRecyclerItems(view: RecyclerView?, items: List<T>?) {
@@ -38,11 +49,13 @@ fun onClickSelectedItem(
     listener: CategoriesInteractionListener, itemId: Long?
 ) {
     view.setOnClickListener {
-        selectedItem?.setBackgroundColor(R.color.base_color)
-        selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
-        listener.onClickCategories(itemId)
+            selectedItem?.setBackgroundColor(R.color.base_color)
+            selectedItem?.setColorFilter(ContextCompat.getColor(view.context, R.color.white))
+            listener.onClickCategories(itemId)
     }
+
 }
+
 
 @SuppressLint("SimpleDateFormat")
 @BindingAdapter(value = ["app:listenerDate"])
@@ -94,6 +107,34 @@ fun checkDataToInsert(view: AppCompatButton, checkAndInsert: () -> Boolean) {
             Toast.makeText(view.context, "Successfully entered", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(view.context, "All data must be entered", Toast.LENGTH_LONG).show()
+        }
+    }
+}
+
+
+@BindingAdapter(value = ["app:setText"])
+fun setTextForEditText(view: AppCompatEditText, setText: Double?) {
+    if (setText != null && setText.toString() != view.text.toString()) {
+        view.setText(setText.toString())
+    }
+}
+
+@InverseBindingAdapter(attribute = "app:setText", event = "app:textAttrChanged")
+fun getValue(view: AppCompatEditText): Double =
+    if(view.text.toString().toDoubleOrNull() != null) {
+        view.text.toString().toDouble()
+    } else {
+        Toast.makeText(view.context, "It must be a number", Toast.LENGTH_LONG).show()
+        0.0
+    }
+
+@BindingAdapter("app:textAttrChanged")
+fun setListener(view: AppCompatEditText, listener: InverseBindingListener?) {
+    view.setOnFocusChangeListener { _ , hasFocus ->
+        if (hasFocus) {
+            view.setText("")
+        } else {
+            listener?.onChange()
         }
     }
 }

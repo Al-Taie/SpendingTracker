@@ -24,7 +24,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
 
     var spendingTypeSelected = MutableLiveData(0)
     private var categoriesSelected = MutableLiveData<Long>(0)
-    var amount = MutableLiveData<String?>()
+    var amount = MutableLiveData<Double?>()
     var currency = MutableLiveData<String>()
     var memo = MutableLiveData<String?>()
     var dateSpending = MutableLiveData<Date?>()
@@ -80,18 +80,19 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
             addSpending()
             true
         }else{
+            Log.i("hhhhhh" , amount.value.toString())
             false
         }
 
-    fun addSpending() {
+    private fun addSpending() {
         subscribeData(insertSpending(
                 Spending(0 ,0, categoriesSelected.value!!, amount.value!!.toDouble(),
                     "IQD", memo.value!!, description.value!!, dateSpending.value!!)))
     }
 
-    fun checkData(): Boolean =
+    private fun checkData(): Boolean =
         (!memo.value.isNullOrEmpty() && !description.value.isNullOrEmpty() &&
-                dateSpending.value != null && !amount.value.isNullOrEmpty())
+                dateSpending.value != null && amount.value != null)
 
     override fun setSpendingType(id: Int?) {
         id?.let { spendingTypeSelected.postValue(it) }

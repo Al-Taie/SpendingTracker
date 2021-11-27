@@ -145,7 +145,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/appCompatEditText2" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/editText"
+                android:id="@+id/data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin24dp"
@@ -153,10 +153,10 @@
                 android:hint="Amount..."
                 android:digits="0123456789"
                 android:lines="1"
+                app:setText="@={viewModel.amount}"
                 android:inputType="numberDecimal"
                 android:drawableTint="@color/icon_hint"
                 android:drawableStart="@drawable/ic_baseline_attach_money_24"
-                android:text="@={viewModel.amount}"
                 android:paddingBottom="@dimen/margin16dp"
                 android:textSize="@dimen/text14sp"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
@@ -179,7 +179,7 @@
                 android:textSize="@dimen/text14sp"
                 app:layout_constraintEnd_toEndOf="@+id/appCompatEditText"
                 app:layout_constraintStart_toStartOf="@+id/appCompatEditText"
-                app:layout_constraintTop_toBottomOf="@+id/editText" />
+                app:layout_constraintTop_toBottomOf="@+id/data" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/appCompatEditText"

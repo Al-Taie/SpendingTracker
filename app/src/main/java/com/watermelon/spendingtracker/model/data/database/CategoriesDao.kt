@@ -2,6 +2,7 @@ package com.watermelon.spendingtracker.model.data.database
 
 import androidx.room.*
 import com.watermelon.spendingtracker.model.data.database.entities.Categories
+import com.watermelon.spendingtracker.model.data.database.relations.CategoriesSpendingCrossRef
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
 
@@ -19,5 +20,7 @@ interface CategoriesDao {
 
     @Query("SELECT * FROM TB_CATEGORY")
     fun getAllCategory(): Observable<List<Categories>>
+
+
 
 }

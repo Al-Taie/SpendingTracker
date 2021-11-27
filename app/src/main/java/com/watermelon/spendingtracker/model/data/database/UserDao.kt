@@ -34,7 +34,8 @@ interface UserDao {
 
     @Transaction
     @Query("SELECT * FROM TB_USER,TB_CATEGORY,TB_SPENDING")
-    fun getUsersWithCategoryWithSpending(): Observable<List<UserWithCategoriesAndSpending>>
+    fun getUsersWithCategoryWithSpending(): Observable<UserWithCategoriesAndSpending>
+
 
 
     @Query("SELECT * FROM UserCategoriesCrossRef")

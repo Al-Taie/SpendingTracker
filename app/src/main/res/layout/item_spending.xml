@@ -6,7 +6,7 @@
     <data>
         <variable
             name="item"
-            type="com.watermelon.spendingtracker.model.data.database.relations.UserCategoriesCrossRef" />
+            type="com.watermelon.spendingtracker.model.data.database.entities.Spending" />
 
         <variable
             name="listener"
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginLeft="48dp"
-                android:text="@{item.categoriesName}"
+                android:text="@{item.description}"
                 app:layout_constraintBottom_toBottomOf="@id/categories"
                 app:layout_constraintLeft_toLeftOf="@id/categories"
                 app:layout_constraintTop_toTopOf="@id/categories"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginRight="48dp"
-                android:text="@{item.userName}"
+                android:text="@{String.valueOf(item.amount)}"
                 app:layout_constraintBottom_toBottomOf="@id/categories"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:layout_marginTop="8dp"
-                android:text="@{String.valueOf(item.categoriesId)}"
+                android:text="@{String.valueOf(item.date)}"
                 app:layout_constraintLeft_toLeftOf="@id/spent_money"
                 app:layout_constraintRight_toRightOf="@id/spent_money"
                 app:layout_constraintTop_toBottomOf="@id/spent_money"

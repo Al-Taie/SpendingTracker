@@ -116,5 +116,5 @@ fun setListener(view: AppCompatEditText, listener: InverseBindingListener?) {
 @SuppressLint("SimpleDateFormat")
 @BindingAdapter(value = ["app:date"])
 fun setDate(view: TextView, date: Date?) {
-    date?.let { view.text = SimpleDateFormat("MMM dd, yyyy hh:mm a").format(date) }
+    date?.let { view.text = SimpleDateFormat("hh:mm a").format(date) }
 }

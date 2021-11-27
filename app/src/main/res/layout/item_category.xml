@@ -30,7 +30,7 @@
             android:scaleType="centerCrop"
             android:background="@drawable/category_shape"
             app:contentPadding="@dimen/margin16dp"
-            app:setSrc="@{item.iconId}"
+            app:image="@{item.iconId}"
             android:layout_marginTop="@dimen/margin8dp"
             android:layout_marginHorizontal="@dimen/margin8dp"
             app:layout_constraintBottom_toBottomOf="parent"

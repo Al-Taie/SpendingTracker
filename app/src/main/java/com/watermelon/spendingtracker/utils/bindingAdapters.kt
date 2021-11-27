@@ -121,11 +121,9 @@ private fun setCurrentSelection(spinner: Spinner, selectedItem: User?): Boolean 
     return false
 }
 
-@BindingAdapter(value = ["app:setSrc"])
-fun setSrcImg(view: ShapeableImageView, item: IconsForCategories?) {
-    item?.let {
-        view.setImageResource(item.icon)
-    }
+@BindingAdapter(value = ["app:image"])
+fun setImage(view: ShapeableImageView, iconID: Int?) {
+    iconID?.let { view.setImageResource(it) }
 }
 
 @BindingAdapter(value = [ "checkAndInsert" ])

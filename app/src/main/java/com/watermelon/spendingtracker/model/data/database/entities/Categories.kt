@@ -10,5 +10,5 @@ data class Categories(
     @PrimaryKey(autoGenerate = true)
     val categoriesId:Long,
     val categoriesName: String,
-    val iconId: IconsForCategories
+    val iconId: Int
 )

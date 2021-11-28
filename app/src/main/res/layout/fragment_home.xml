@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewmodel"
+            name="viewModel"
             type="com.watermelon.spendingtracker.ui.home.HomeViewModel" />
     </data>
 
@@ -59,6 +59,7 @@
             android:gravity="center"
             android:textSize="36sp"
             android:textStyle="bold"
+            app:total="@{viewModel.sumOfSpending}"
             app:layout_constraintLeft_toLeftOf="@id/balance_text"
             app:layout_constraintRight_toRightOf="@id/balance_text"
             app:layout_constraintTop_toBottomOf="@id/balance_text"
@@ -144,7 +145,7 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            app:items="@{viewmodel.spending}"
+            app:items="@{viewModel.spending}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/expenses"
             app:layout_constraintBottom_toBottomOf="parent"

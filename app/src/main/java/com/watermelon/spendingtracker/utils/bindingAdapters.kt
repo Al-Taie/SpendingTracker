@@ -118,3 +118,8 @@ fun setListener(view: AppCompatEditText, listener: InverseBindingListener?) {
 fun setDate(view: TextView, date: Date?) {
     date?.let { view.text = SimpleDateFormat("hh:mm a").format(date) }
 }
+
+@BindingAdapter(value = ["app:total"])
+fun setTotalSpending(view: TextView, value: Double?) {
+    view.text = "$${value ?: 0.0}"
+}

@@ -1,6 +1,5 @@
 package com.watermelon.spendingtracker.ui.addTemplate
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.watermelon.spendingtracker.model.data.Repository.getAllCategory
 import com.watermelon.spendingtracker.model.data.Repository.insertCategories
@@ -8,12 +7,12 @@ import com.watermelon.spendingtracker.model.data.Repository.insertSpending
 import com.watermelon.spendingtracker.model.data.database.entities.Category
 import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import com.watermelon.spendingtracker.ui.base.BaseViewModel
-import com.watermelon.spendingtracker.utils.Constant.ERROR
 import com.watermelon.spendingtracker.utils.subscribeData
 import java.util.*
 
 
-class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, CategoriesInteractionListener {
+class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener,
+    CategoriesInteractionListener {
     var amount = MutableLiveData<Double?>()
     var memo = MutableLiveData<String?>()
     var dateSpending = MutableLiveData<Date?>()
@@ -27,7 +26,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
     }
 
     private fun checkAndAddCategories() {
-        observeData(getAllCategory(), {if (it.isNullOrEmpty()) insertCategories() }, {})
+        observeData(getAllCategory(), { if (it.isNullOrEmpty()) insertCategories() }, {})
     }
 
     override fun onItemClicked() {
@@ -42,9 +41,7 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
     }
 
 
-    private fun onNotesFail(error: Throwable) {
-        Log.i(ERROR, error.message.toString())
-    }
+    private fun onNotesFail(error: Throwable) {}
 
 
     fun checkAndInsertData(): Boolean =
@@ -52,7 +49,6 @@ class AddTemplateViewModel : BaseViewModel(), TemplateInteractionListener, Categ
             addSpending()
             true
         } else {
-            Log.i("hhhhhh", amount.value.toString())
             false
         }
 

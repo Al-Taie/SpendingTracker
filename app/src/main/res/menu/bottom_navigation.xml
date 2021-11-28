@@ -14,12 +14,6 @@
         android:color="@color/base_color"/>
 
     <item
-        android:id="@+id/statisticFragment"
-        android:title="Statistic"
-        android:icon="@drawable/ic_baseline_insights_24"
-        android:color="@color/base_color"/>
-
-    <item
         android:id="@+id/calenderFragment"
         android:title="Calender"
         android:icon="@drawable/ic_baseline_calendar_today_24"

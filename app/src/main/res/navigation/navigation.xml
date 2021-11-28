@@ -18,11 +18,6 @@
         tools:layout="@layout/fragment_add_tamplate"/>
 
     <fragment
-        android:id="@+id/statisticFragment"
-        android:name="com.watermelon.spendingtracker.ui.statistic.StatisticFragment"
-        android:label="StatisticFragment"
-        tools:layout="@layout/fragment_statistic"/>
-    <fragment
         android:id="@+id/calenderFragment"
         android:name="com.watermelon.spendingtracker.ui.calender.CalenderFragment"
         android:label="CalenderFragment"

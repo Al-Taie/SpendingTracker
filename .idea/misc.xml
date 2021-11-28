@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/drawable/bg_shape.xml" value="0.2222222222222222" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/layout/fragment_calender.xml" value="0.2" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/layout/item_single_expense.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/layout/item_spending.xml" value="0.4" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/SpendingTrackergg/app/src/main/res/menu/bottom_navigation.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/drawable/category_shape.xml" value="0.175" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/activity_main.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/drop_down_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/fragment_add_tamplate.xml" value="0.25" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/fragment_calender.xml" value="0.13240740740740742" />
+        <entry key="..\:/Users/msi/AndroidStudioProjects/SpendingTracker/app/src/main/res/layout/item_category.xml" value="0.17831813576494426" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/layout/fragment_add_tamplate.xml" value="0.14375" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/layout/fragment_home.xml" value="0.15833333333333333" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/layout/fragment_statistic.xml" value="0.15" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/layout/item_category.xml" value="0.10208333333333333" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/layout/item_spending.xml" value="0.15" />
+        <entry key="..\:/WorkSpace/Kotlin/SpendingTracker/app/src/main/res/menu/bottom_navigation.xml" value="0.14375" />
       </map>
     </option>
   </component>

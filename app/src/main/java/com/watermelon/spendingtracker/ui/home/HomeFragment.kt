@@ -16,10 +16,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.spending.observe(this, { spendingList ->
+        viewModel.spending.observe(this) { spendingList ->
             spendingList?.let {
                 binding.expensesRecycler.adapter = TemplateAdapter(it, viewModel)
             }
-        })
+        }
     }
 }

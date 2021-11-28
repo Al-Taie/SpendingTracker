@@ -7,5 +7,5 @@ import com.watermelon.spendingtracker.ui.base.BaseAdapter
 class CalenderAdapter(list: List<Spending>, listener: CalenderInteractionListener) :
     BaseAdapter<Spending>(list, listener) {
     override val layoutID: Int
-        get() = R.layout.item_spending
+        get() = R.layout.item_single_expense
 }

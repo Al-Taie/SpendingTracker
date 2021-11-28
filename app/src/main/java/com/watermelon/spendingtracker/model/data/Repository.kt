@@ -10,25 +10,20 @@ object Repository {
     private val spendingDao = SpendingDatabase.getInstance.spendDao
     private val categoriesDao = SpendingDatabase.getInstance.categoriesDao
 
-    fun getSumOfSpending() = spendingDao.getSumOfSpending()
-
     private fun insertCategory(category: Category) = categoriesDao.insert(category)
-
-
-    fun insertSpending(spending: Spending) = spendingDao.insert(spending)
-    fun deleteSpending(spending: Spending) = spendingDao.delete(spending)
-    fun updateSpending(spending: Spending) = spendingDao.update(spending)
-    fun getAllSpending() = spendingDao.getAllSpending()
-
-    fun getAllCategory() = categoriesDao.getAllCategory()
-
-    fun getAllUserCategoriesName() = spendingDao.getAllUserCategoriesName()
-
-    fun getSumOfSpendingByCategoryName(categoryName: String) = spendingDao.getSumOfSpendingByCategoryName(categoryName)
-
     fun insertCategories() {
         IconsForCategories.values().forEach {
             insertCategory(Category(0, it.title, it.iconID)).subscribeData()
         }
     }
+    fun insertSpending(spending: Spending) = spendingDao.insert(spending)
+
+    fun getAllSpending() = spendingDao.getAllSpending()
+    fun getAllCategory() = categoriesDao.getAllCategory()
+    fun getSumOfSpending() = spendingDao.getSumOfSpending()
+    fun getAllUserCategoriesName() = spendingDao.getAllUserCategoriesName()
+    fun getSpendingByDate(date: Long) = spendingDao.getSpendingByDate(date)
+    fun getSumOfSpendingByCategoryName(categoryName: String) = spendingDao.getSumOfSpendingByCategoryName(categoryName)
+
+
 }

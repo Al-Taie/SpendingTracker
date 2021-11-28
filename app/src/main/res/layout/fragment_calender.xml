@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="viewmodel"
+            name="viewModel"
             type="com.watermelon.spendingtracker.ui.calender.CalenderViewModel" />
     </data>
 
@@ -14,9 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_shape">
-
-
-
 
         <CalendarView
             android:id="@+id/calendarView"
@@ -84,12 +81,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/calender_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="@dimen/margin4dp"
-                app:items="@{viewmodel.spending}"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/total_textView"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="8dp"
+                app:items="@{viewModel.spending}"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 tools:listitem="@layout/item_spending" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

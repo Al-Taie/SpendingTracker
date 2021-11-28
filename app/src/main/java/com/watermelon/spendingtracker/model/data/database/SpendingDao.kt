@@ -4,6 +4,7 @@ import androidx.room.*
 import com.watermelon.spendingtracker.model.data.database.entities.Spending
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Observable
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SpendingDao {
@@ -25,9 +26,9 @@ interface SpendingDao {
     @Query("SELECT SUM(amount) FROM TB_SPENDING WHERE categoryName = :categoryName")
     fun getSumOfSpendingByCategoryName(categoryName: String): Observable<Double>
 
-    @Query("SELECT * FROM TB_SPENDING")
-    fun getAllSalary(): Observable<List<Spending>>
-
     @Query("SELECT categoryName FROM TB_SPENDING")
     fun getAllUserCategoriesName() : Observable<List<String>>
+
+    @Query("SELECT * FROM TB_SPENDING WHERE date >= :date")
+    fun getSpendingByDate(date: Long): Observable<List<Spending>>
 }

@@ -1,14 +1,13 @@
 package com.watermelon.spendingtracker.ui.calender
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.watermelon.spendingtracker.databinding.FragmentCalenderBinding
 import com.watermelon.spendingtracker.ui.base.BaseFragment
-import com.watermelon.spendingtracker.ui.home.TemplateAdapter
+import java.util.*
 
 class CalenderFragment : BaseFragment<FragmentCalenderBinding>() {
 
@@ -20,6 +19,10 @@ class CalenderFragment : BaseFragment<FragmentCalenderBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.calendarView.setOnDateChangeListener { _, y, m, d ->
+            viewModel.showSpending(Date("$y/$m/$d").time)
+        }
 
         viewModel.spending.observe(this) { spendingList ->
             spendingList?.let {

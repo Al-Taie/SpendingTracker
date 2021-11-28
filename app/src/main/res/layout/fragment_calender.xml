@@ -14,162 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            tools:text="@string/expenses"
-            android:textColor="@color/icon_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-
-        <ImageView
-            android:id="@+id/dropdown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:tint="@color/icon_color"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/main_card"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            app:cardCornerRadius="8dp"
-            android:elevation="0dp"
-            android:backgroundTint="@color/background_color"
-            android:background="@drawable/layout_shape"
-            android:layout_marginStart="@dimen/margin16dp"
-            android:layout_marginEnd="@dimen/margin16dp"
-            android:layout_marginTop="@dimen/margin16dp"
-            android:paddingHorizontal="@dimen/margin4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_1"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="@dimen/margin4dp"
-            android:background="@drawable/layout_shape"
-            app:cardCornerRadius="8dp"
-            android:elevation="@dimen/elevation8"
-            app:layout_constraintTop_toTopOf="@id/main_card"
-            app:layout_constraintStart_toStartOf="@id/main_card"
-            app:layout_constraintEnd_toStartOf="@id/card_2"
-            app:layout_constraintHorizontal_bias="0.5" />
-
-        <TextView
-            android:id="@+id/total_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin4dp"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:elevation="@dimen/elevation8"
-            android:text="Total"
-            android:textColor="@color/base_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/card_1"
-            app:layout_constraintTop_toTopOf="@id/card_1" />
-
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:elevation="@dimen/elevation8"
-            tools:text="71 IQD"
-            android:textColor="@color/icon_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/card_1"
-            app:layout_constraintTop_toBottomOf="@id/total_text" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_2"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:background="@drawable/layout_shape"
-            app:cardCornerRadius="8dp"
-            android:elevation="@dimen/elevation8"
-            app:layout_constraintTop_toTopOf="@id/card_1"
-            app:layout_constraintStart_toEndOf="@id/card_1"
-            app:layout_constraintEnd_toStartOf="@id/card_3"
-            app:layout_constraintHorizontal_bias="0.5" />
-
-        <TextView
-            android:id="@+id/expense_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/base_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin4dp"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:elevation="@dimen/elevation8"
-            android:text="Expense"
-            app:layout_constraintStart_toStartOf="@id/card_2"
-            app:layout_constraintTop_toTopOf="@id/card_2" />
-
-        <TextView
-            android:id="@+id/expense"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/icon_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:elevation="@dimen/elevation8"
-            tools:text="71 IQD"
-            app:layout_constraintStart_toStartOf="@id/card_2"
-            app:layout_constraintTop_toBottomOf="@+id/expense_text" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_3"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:background="@drawable/layout_shape"
-            app:cardCornerRadius="8dp"
-            android:elevation="@dimen/elevation8"
-            app:layout_constraintTop_toTopOf="@id/card_2"
-            app:layout_constraintStart_toEndOf="@id/card_2"
-            app:layout_constraintEnd_toEndOf="@id/main_card"
-            app:layout_constraintHorizontal_bias="0.5" />
-
-        <TextView
-            android:id="@+id/income_text"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/base_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            android:elevation="@dimen/elevation8"
-            android:layout_marginTop="@dimen/margin4dp"
-            android:layout_marginStart="@dimen/margin8dp"
-            android:text="Income"
-            app:layout_constraintStart_toStartOf="@id/card_3"
-            app:layout_constraintTop_toTopOf="@id/card_3" />
-
-        <TextView
-            android:id="@+id/income"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/icon_color"
-            android:textSize="@dimen/text14sp"
-            android:textStyle="bold"
-            android:elevation="@dimen/elevation8"
-            android:layout_marginStart="@dimen/margin8dp"
-            tools:text="71 IQD"
-            app:layout_constraintStart_toStartOf="@id/card_3"
-            app:layout_constraintTop_toBottomOf="@id/income_text" />
 
 
         <CalendarView
@@ -179,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/main_card" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -240,10 +85,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin4dp"
+                app:items="@{viewmodel.spending}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/total_textView"
-                tools:listitem="@layout/item_single_expense" />
+                tools:listitem="@layout/item_spending" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

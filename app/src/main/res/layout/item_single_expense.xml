@@ -47,6 +47,7 @@
             android:textColor="@color/icon_color"
             android:textSize="@dimen/text14sp"
             android:textStyle="bold"
+            android:text="@{item.memo}"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/app_name" />

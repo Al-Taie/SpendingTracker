@@ -10,4 +10,5 @@
     <string name="yearly">Yearly</string>
     <string name="spend">spend</string>
     <string name="spend_tracking">Spend tracking</string>
+    <string name="balance">Balance</string>
 </resources>

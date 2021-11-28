@@ -12,24 +12,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/view_shape"
+        android:background="@drawable/background_shape"
         tools:context=".ui.addTemplate.AddTemplateFragment">
-
-        <ImageView
-            android:id="@+id/go_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="@dimen/margin16dp"
-            android:background="@drawable/shape_arrow"
-            android:elevation="2dp"
-            android:padding="@dimen/padding8dp"
-            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView" />
-
-        <TextView
-            android:id="@+id/textView"
+      <TextView
+            android:id="@+id/add_spending_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin16dp"
@@ -42,29 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_group"
-            style="@style/Widget.MyApp.Chip.Choice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:clickable="false"
-            android:background="@drawable/chip_shape"
-            app:chipCornerRadius="6dp"
-            app:chipStartPadding="@dimen/padding16dp"
-            app:chipEndPadding="@dimen/padding16dp"
-            android:text="@string/expenses"
-            android:textColor="@color/primary_color"
-            android:clipToPadding="false"
-            android:layout_marginTop="@dimen/margin24dp"
-            android:paddingHorizontal="@dimen/margin4dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"/>
-
-
-
-        <androidx.recyclerview.widget.RecyclerView
+      <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/categories_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -78,7 +42,7 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/chip_group"
+            app:layout_constraintTop_toBottomOf="@id/add_spending_text"
             app:spanCount="4"
             tools:listitem="@layout/item_category" />
 
@@ -110,11 +74,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:layout_marginTop="@dimen/margin16dp"
-                android:background="@drawable/background_icon_category_shape"
+                android:background="@drawable/category_clicked"
                 android:drawableStart="@drawable/ic_baseline_add_24"
                 android:drawableTint="@color/white"
                 android:paddingHorizontal="@dimen/margin8dp"
                 android:paddingVertical="@dimen/padding4dp"
+                android:clickable="true"
                 app:checkAndInsert="@{() -> viewModel.checkAndInsertData()}"
                 android:text="Add"
                 android:textColor="@color/white"

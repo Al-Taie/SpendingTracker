@@ -70,7 +70,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         listOf("#75629A", "#A998CA", "#25095B", "#BD7AE3", "#7F67AD").map { ColorTemplate.rgb(it) }
             .forEach(colors::add)
 
-        val dataSet = PieDataSet(entries, "Expense Category").apply { this.colors = colors }
+        val dataSet = PieDataSet(entries, "Category").apply { this.colors = colors }
+        dataSet.valueTextSize=10f
         val data = PieData(dataSet).apply {
             setDrawValues(true)
             setValueTextSize(12f)

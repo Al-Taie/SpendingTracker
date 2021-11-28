@@ -2,7 +2,6 @@ package com.watermelon.spendingtracker.ui.statistic
 
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.formatter.PercentFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.watermelon.spendingtracker.databinding.FragmentStatisticBinding
 import com.watermelon.spendingtracker.ui.base.BaseFragment
@@ -32,7 +30,7 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
 
         viewModel.chartData.observe(this, { loadPieChartData(it) })
 
-        viewModel.spending.observe(this, {binding.totalValue.text = (it?:0.0).toString()})
+        viewModel.spending.observe(this, { binding.totalValue.text = (it ?: 0.0).toString() })
     }
 
     private fun changeChartShape() {}
@@ -42,8 +40,8 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
         pieChart.apply {
             isDrawHoleEnabled = true
             setUsePercentValues(true)
-            setEntryLabelTextSize(12f)
-            setEntryLabelColor(Color.BLACK)
+            setEntryLabelTextSize(0f)
+            setEntryLabelColor(Color.WHITE)
             centerText = "Spending"
             setCenterTextSize(17f)
             description.isEnabled = false
@@ -64,14 +62,15 @@ class StatisticFragment : BaseFragment<FragmentStatisticBinding>() {
         dataList?.forEach { entries.add(PieEntry(it.second, it.first)) }
 
         val colors: ArrayList<Int> = ArrayList()
-        ColorTemplate.MATERIAL_COLORS.forEach(colors::add)
-        ColorTemplate.VORDIPLOM_COLORS.forEach(colors::add)
+
+        listOf("#75629A", "#A998CA", "#25095B", "#BD7AE3", "#7F67AD").map { ColorTemplate.rgb(it) }
+            .forEach(colors::add)
 
         val dataSet = PieDataSet(entries, "Expense Category").apply { this.colors = colors }
         val data = PieData(dataSet).apply {
             setDrawValues(true)
             setValueTextSize(12f)
-            setValueTextColor(Color.BLACK)
+            setValueTextColor(Color.WHITE)
         }
 
         pieChart.apply {

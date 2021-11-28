@@ -11,11 +11,31 @@ class HomeViewModel : BaseViewModel(), TemplateInteractionListener {
     private val _sumOfSpending = MutableLiveData<Double>()
     val sumOfSpending = _sumOfSpending.asFlow().asLiveData()
     val spending = MutableLiveData<List<Spending>?>()
+    val userCategories = MutableLiveData<Set<String>>()
+    val chartData = MutableLiveData<List<Pair<String, Float>>?>(null)
 
    init {
        showSpending()
        getSumOfSpending()
+       initChart()
    }
+
+    private fun initChart() {
+        observeData(
+            Repository.getAllUserCategoriesName(),
+            { userCategories.postValue(it.toSet()) },
+            {})
+    }
+
+    fun getSumOfSpendingByCategory() {
+        val categoriesWithSpending = mutableListOf<Pair<String, Float>>()
+        userCategories.value?.forEach { categoryName ->
+            observeData(Repository.getSumOfSpendingByCategoryName(categoryName), {
+                categoriesWithSpending.add(Pair(categoryName, it.toFloat()))
+                chartData.postValue(categoriesWithSpending)
+            }, {})
+        }
+    }
 
     private fun showSpending() {
         observeData(Repository.getAllSpending(), {
